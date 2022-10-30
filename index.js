@@ -1405,6 +1405,13 @@
 
 // console.log("other application work");
 
+//Output
+// other application work
+// register end
+// Error while sending email
+// Error
+
+
 //abhi uppar wallw code mai authenticate ki error handling nhi thi kyoki usme hamne 
 //error nhi daala tha isliye hamne throw new error likha hai yehh kya karega authenticate mai
 //error daal dhega phir hamara baap print nhi hogha , ekk eoor dhe dhega lekin agar hamm 
@@ -1556,13 +1563,180 @@
 
 
 
+//Namaste Javascript Season - 1
 
+//Lecture 1
 
 //the whole think is called execution contest and inside there are two things that
 //1)memory componenet : In this we write functions and vaiables values stored in key value format
 //2)code component : in this we write whole Javascript code
 
 
+
+//Lecture 2
+
+// var n = 2;
+// function square (num){
+//     var ans = num * num;
+//     return ans;
+// }
+// var square2 = square(n);
+// var square4 = square(4);
+
+//abhi yehh program kuch esse kam karega ki phele memory componenet 
+//mai variables and functions initialize hoyege
+//and variable ko phele undefined se intialized karegi javascript in memory component
+//and function purra ka purra copy hoo jatta hai memory component mai 
+//{
+//     var ans = num * num;
+//     return ans;
+// }
+// and then phir same process hotta hai values jatti hai and return hotti hai code componenet mai
+
+
+//Lecture 3
+
+//Hoisting
+  
+// 1. Hoisting in JavaScript is a process in which all the Variables, Functions and Class defination are declared BEFORE execution of the code 
+// 2. Variables are initialised to UNDEFINED when they are declared and Function defination is stored AS IT IS.
+// 3. They are declared in Memory Allocation Phase in the Memory Component of Execution Context, so we can use them even BEFORE they are declared.
+// 4. UNDEFINED means Variable has been declared but value is not ASSIGNED but NOT DEFINED means Variables is NOT DECLARED.
+// 5. When we assign Variable to a Function defination, we CAN NOT call this Variable as Function BEFORE declaration as it will behave as Variable with UNDEFINED value.
+// 6.  When we create an arrow function, then it behaves as a variable that is why undefined comes 
+//var x      - Declaration
+//var x = 7; - Initialization
+
+// getName();
+// console.log(x);
+// var x = 7;
+// function getName(){
+//     console.log("Namaeste Js");
+// }
+//Output
+// Namaeste Js
+// undefined
+
+
+// getName();
+// console.log(x);
+// console.log(getName);
+// var x = 7;
+// function getName(){
+//     console.log("Namaeste Js");
+// }
+//Output
+// Namaeste Js
+// undefined
+// [Function: getName]
+
+
+// getName();
+// console.log(x);
+// console.log(getName);
+// var x = 7;
+// var getName = () => {
+//     console.log("Namaeste Js");
+// }
+//undefined (see point 6)
+
+
+
+//Lecture 4
+ 
+//In call stack global execution context are kept
+// 1. We learnt how functions work in JS.
+// 2. At first a global execution context is created, which consists of Memory and code and has 2 phases: Memory allocation phase and code execution phase.
+// 3. In the first phase, the variables are assigned "undefined" while functions have their own code.
+// 4. Whenever there is a function declaration in the code, a separate local execution context gets created having its own phases and is pushed into the call stack.
+// 5. Once the function ends, the EC is removed from the call stack.
+// 6. When the program ends, even the global EC is pulled out of the call stack
+
+
+// var x = 1;
+// a();
+// b();
+// console.log(x);
+// function a(){
+//     var x = 10;
+//     console.log(x);
+// }
+// function b(){
+//     var x = 100;
+//     console.log(x);
+
+// }
+//Output
+// 10
+// 100
+// 1
+
+
+
+
+//Lecture 5
+  
+// Shortest Program in JS: Empty file. Still, browsers make global Executionn context and global space along with Window object. 
+// Variables present in a global space can be accessed by a "window" object. (like window.a)
+// In global space, (this === window) object.
+// Anything which is not inside any function is the global space
+
+//var a = 10;
+//function b(){
+//    var x = 10;
+//}
+//console.log(window.a);  //10  
+//console.log(a);         //10
+//console.log(this.a)     //10
+
+
+//Lecture 7
+
+// 1. Undefined is like a placeholder till a variable is not assigned a value.
+// 2. undefined !== not defined
+// 3. JS- weakly typed language since it doesn't depend on data type declarations because a variable can hold number , string for example if I stored number later after I can store string in same variable
+
+// var a;
+// console.log(a);
+// a = 10;
+// console.log(a);
+// a = "hello world"
+// console.log(a);
+// Output
+// undefined
+// 10
+// hello world
+
+
+//Lecture 8 
+// Scope Chain, Scope & Lexical Environment 
+
+
+// 0) Lexical environment = EC's Local Memory + Reference to Lexical Environment of its parent.
+
+// 1) Lexical Environment of its parent is the scope where a function is physically present or defined. So, suppose a function x(), is defined and invoked in the GEC, when function x()'s EC is pushed in the call stack, it stores a reference to its parent's lexical environment i.e. the GEC's memory.
+
+// 2) Whenever a new Execution Context is pushed in the Call Stack it holds a reference to the Lexical Environment of its parent, i.e. the EC's memory from where it was invoked.
+
+// 3) Global execution context holds reference to null.
+
+// 4)  Javascript engine first looks for the variable/function being accessed in the local scope of the function, and if not found, it keeps on searching the lexical environment of its parent until it finds the variable/function being accessed.
+
+// 5) The mechanism mentioned in point 4 above is called SCOPE CHAIN.
+
+// 6) If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the  browser's console.
+ 
+
+// function a(){
+//    var b = 10;
+//    c();
+//     function c(){
+//         console.log(b);
+//     }
+// }
+// a();
+//Output
+//10
 
 
 
