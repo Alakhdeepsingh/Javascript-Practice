@@ -1,6 +1,7 @@
 let a = 10;
 console.log(a);
-a = "Harry";
+a = "Alakh";
+console.log(a);
 console.log(a);
 //Output
 // 10
