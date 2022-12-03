@@ -109,16 +109,26 @@
 // const item = {
 //     "Harry" : true,
 //     "Shubh" : false,
-//     "Lovish" : 67,
+//     "Lovisjnh" : 67,
 //     "Rohan" : undefined
 // }
-
 // console.log(item["Shubh"]);
 //Output
 // false
 
 // console.log(item["Shu"]);
-
 //Output
 // undefined
 //since no object name is shu so the value will not be there so we get undefined as output
+
+
+//Practice set 1
+
+// let a = "alakh";
+// let b = 18;
+// console.log(a+b);
+// console.log(a+b);
+
+
+
+
