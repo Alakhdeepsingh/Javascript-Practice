@@ -359,4 +359,25 @@
 //but the value of string will never changed means name will always be "hello"
 
 
+// console.log("har\"".length)
+// 4
+
+// let text = "Hello world, welcome to the universe.";
+// text.startsWith("Hello");
+
+
+// let name = "ALAKH";
+// console.log(name.toLowerCase());
+// Output
+// alakh
+
+// let name = "alakh";
+// console.log(name.toUpperCase());
+// Output
+// ALAKH
+
+
+// let value = 1000;
+// let a = `Please give rs ${value}`
+// console.log(a);
 
