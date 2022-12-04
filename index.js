@@ -381,3 +381,58 @@
 // let a = `Please give rs ${value}`
 // console.log(a);
 
+
+//array
+
+let a = [10,20,30,40];
+let b = [50,70,6,80];
+console.log(a.toString());
+console.log(typeof(a));
+// 10,20,30,alakh
+// object
+//array is a type of an object
+
+// console.log(a.join("sdf"))
+// 10-20-30-alakh
+
+// console.log(a.pop())
+// 40
+
+// console.log(a.push(100));
+// console.log(a)
+// [ 10, 20, 30, 40, 100 ]
+
+// console.log(a.shift());
+// shift remove first element and return that
+// console.log(a)
+// [ 20, 30, 40 ]
+
+// console.log(a.unshift(200));
+//unshift add a new element in an array in the beginnig
+// console.log(a)
+// [ 200, 10, 20, 30, 40 ]
+
+
+// console.log(a.delete(2));
+// console.log(a)
+
+// console.log(a.concat(a,b));
+//concat join the two arrays
+// [
+//     10, 20, 30, 40, 10,
+//     20, 30, 40, 50,  6,
+//     70, 80
+//   ]
+
+// console.log(b.sort())
+// [ 50, 6, 70, 80 ]
+
+// const number = [1,2,3,4,5,6];
+// console.log(number.splice(2,1,23));
+
+// const numbe = [1,2,3,4,5,6];
+// console.log(numbe.slice(2));
+//slice cut a piece from an array
+// [ 3, 4, 5, 6 ]
+
+console.log(a.reverse());

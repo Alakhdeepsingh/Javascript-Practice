@@ -1,2 +1,1 @@
-Output
-// alakh good person
+console.log(a.de
