@@ -127,8 +127,92 @@
 // let a = "alakh";
 // let b = 18;
 // console.log(a+b);
-// console.log(a+b);
+// console.log(typeof (a+b));
+//Output
+// alakh18
+// string
+// yaad rakna ki string mai number add kar rahe hai matlab ki a mai b add kar rahe hai isliye string type print hoo raha hai a+b karne parr
 
+// const h = {
+//     alakh : "hello",
+//     section : 1
+// };
+//alakh is key and hello is value
+
+// h['friend']="Shubham"
+// to add value in object we have written in above line
+
+// h['name']="Alakh"
+// changing the value of name in object h
+// h[alakh] = 3;
+// console.log(h);
+
+// { alakh: 'hello', section: 1, friend: 'Shubham', name: 'Alakh' }
+
+//though h is const but then also we can change inside values of different keys because
+//object h is reference to alakh and section , though we cannot change the value of hai
+
+
+// const dict = {
+//     appreciate : "hello",
+//     alakh : "light"
+// }
+// console.log(dict.alakh);
+// console.log(dict['alakh']);
+//there are basicaly two ways to access the alakh using this object dict
+//Output
+// light
+
+
+
+
+// let a = prompt("Hey whatsupp?")
+// console.log(typeof a);
+//Output
+//String  // a is a type of string
+// a = Number.parseInt(a); //converting the string to number
+// console.log(typeof a);
+//Output
+// number
+// if(a>0){
+//     alert("This is a valid age")  //alert tell us something
+// }
+//Output
+// This is a valid age
+
+
+
+// let age = 29;
+// if(age>=10 && age<=20){
+//     console.log("good");
+// }
+// else{
+//     console.log("bad");
+// }
+//Output bad
+
+
+// let num = 13;
+// if(num%2==0 || num%3==0){
+//     console.log("divisible");
+// }
+// else{
+//     console.log("not divisible")
+// }
+// Output 
+// not divisible
+
+// let age = 10;
+// if(age>18){
+//     console.log("you can drive");
+// }
+// else{
+//     console.log("you cannot drive");
+// }
+// (age==10)?console.log('Yes'):console.log('No');
+// Output 
+// you cannot drive
+// Yes
 
 
 
