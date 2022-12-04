@@ -299,3 +299,64 @@
 // console.log(c);
 //Output
 //30
+
+
+//strings
+
+
+
+
+//template  literal are backtics instead of quotes to define a string
+//backtik  
+//string interpolation : we can insert variable directly in backtik using dollar sign
+ 
+// let name = `alakh 'is' "good" boy`;
+// console.log(name);
+//Output
+// alakh 'is' "good" boy
+
+// let boy1 = "hh";
+// let boy2 = "gg";
+// let sen = `${boy1} is friend ${boy2}`
+// console.log(sen)
+//Output
+// hh is friend gg
+
+// let fruit = 'bana\'na'
+// console.log(fruit);
+// console.log(fruit.length)
+//Output
+// bana'na
+// 7
+
+//slice start from 2nd index and ends on 3rd index, it will not end on 4th index 
+//as we are writing 4 so 4 will not be included
+
+// let name = "alakh";
+// let ans = name.slice(2,4);
+// console.log(ans);
+//Output
+// ak
+
+// let name = "alakh don"
+// let newname = name.replace("don" , "good person");
+// console.log(newname);
+//Output
+// alakh good person
+
+// let name = "hello "
+// let name2 = "jayesh "
+// let newname = name.concat(name2 , "good person");
+// console.log(newname);
+// Output
+// hello jayesh good person
+
+// let friend = "    Alakh     "
+// console.log(friend.trim())
+//if we want to remove the space that is there in alakh then we can do using trim 
+
+//string is immutable means whatever we put function on name , 
+//but the value of string will never changed means name will always be "hello"
+
+
+

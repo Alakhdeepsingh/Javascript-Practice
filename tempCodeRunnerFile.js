@@ -1,1 +1,2 @@
-h[alakh] = 3;
+Output
+// alakh good person
