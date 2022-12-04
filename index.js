@@ -215,4 +215,64 @@
 // Yes
 
 
+//Program to add first n natural numbers
+// const prompt = require("prompt-sync")({sigint: true});
+// let sum = 0;
+// let n = prompt("Entern the value of n")
+// n=Number.parseInt(n)
+// for(let i = 0; i<n; i++){
+//     sum += (i+1)
+// }
+// console.log(sum);
+// Output  
+// Entern the value of n5
+// 15
+
+
+
+// if we want keys and values in object then we can use for in loop
+// let obj = {
+//     harry : 90,
+//     alakh : 45,
+//     jayesh : 23,
+//     riti : 67,
+//     jassi : 34
+// }
+
+// for (let a in obj){
+//     console.log(a);
+// }
+// // Output 
+// harry
+// alakh 
+// jayesh
+// riti  
+// jassi
+
+
+let obj = {
+    harry : 90,
+    alakh : 45,
+    jayesh : 23,
+    riti : 67,
+    jassi : 34
+}
+
+for (let a in obj){
+    console.log(a, obj[a]);
+}
+// harry 90
+// alakh 45
+// jayesh 23
+// riti 67
+// jassi 34
+
+for (let b of "Harry"){
+    console.log(b);
+}
+// H
+// a
+// r
+// r
+// y
 
