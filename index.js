@@ -250,29 +250,52 @@
 // jassi
 
 
-let obj = {
-    harry : 90,
-    alakh : 45,
-    jayesh : 23,
-    riti : 67,
-    jassi : 34
-}
+// let obj = {
+//     harry : 90,
+//     alakh : 45,
+//     jayesh : 23,
+//     riti : 67,
+//     jassi : 34
+// }
 
-for (let a in obj){
-    console.log(a, obj[a]);
-}
+// for (let a in obj){
+//     console.log(a, obj[a]);
+// }
 // harry 90
 // alakh 45
 // jayesh 23
 // riti 67
 // jassi 34
 
-for (let b of "Harry"){
-    console.log(b);
-}
+// for (let b of "Harry"){
+//     console.log(b);
+// }
 // H
 // a
 // r
 // r
 // y
 // kjbkjbjkbkjjbj
+
+
+// function one(x,y){
+//     let d = x+y;
+//     return d;
+// }
+// let a=10,b=20;
+// let c = one(a, b);
+// console.log(c);
+//Output
+//30
+
+
+//arrow function
+// const hello = (x,y)=>{
+//     return d = x+y;
+
+// }
+// let a=10,b=20;
+// let c = hello(a, b);
+// console.log(c);
+//Output
+//30
