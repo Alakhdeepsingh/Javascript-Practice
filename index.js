@@ -216,7 +216,7 @@
 
 
 //Program to add first n natural numbers
-// const prompt = require("prompt-sync")({sigint: true});
+const prompt = require("prompt-sync")({sigint: true});
 // let sum = 0;
 // let n = prompt("Entern the value of n")
 // n=Number.parseInt(n)
@@ -384,10 +384,11 @@
 
 //array
 
-let a = [10,20,30,40];
-let b = [50,70,6,80];
-console.log(a.toString());
-console.log(typeof(a));
+// let a = [10,20,30,40];
+// let b = [50,70,6,80];
+// console.log(a.toString());
+//toString coverts number to string
+// console.log(typeof(a));
 // 10,20,30,alakh
 // object
 //array is a type of an object
@@ -435,4 +436,77 @@ console.log(typeof(a));
 //slice cut a piece from an array
 // [ 3, 4, 5, 6 ]
 
-console.log(a.reverse());
+// console.log(a.reverse());
+// [ 40, 30, 20, 10 ]
+
+// let num = [3,4,5,6]
+// num.forEach((element)=>{
+//     console.log(element*element);
+// })
+// 9
+// 16
+
+// 25
+// 36
+
+//we use foreach jabh hamme kisi array ke existing element
+//parr changes karne hoye
+
+
+//map
+//create a new array by performing some operations on each array element
+// let arr = [1,2,3];
+// let ae = arr.map((value)=>{
+//     console.log(value);
+//     return value + 1
+// })
+// console.log(ae);
+// 1
+// 2
+// 3
+// [ 2, 3, 4 ]
+
+
+//filter
+// let arr2=[1,2,3,4,5,6,7,8];
+// let ee = arr2.filter((value)=>{
+//     return value<6
+// })
+// console.log(ee)
+// [ 1, 2, 3, 4, 5 ]
+
+let w = [100,20,3,4];
+// let aw = prompt("Number");
+// aw = Number.parseInt(aw);
+// w.push(aw)
+// console.log(w)
+//Output
+// Number344
+// [ 1, 2, 3, 4, 344 ]
+
+// let aa = w.filter((value)=>{
+//     return value%10;
+// })
+// console.log(aa);
+//Output
+// [ 3, 4 ]
+
+
+//alert
+//confirm
+//prompt
+
+
+//dom
+//html ke page ko object banna diya jatta hai and usse dom bol dette hai 
+
+// document.body 
+//we are trying to access html body that is js object
+
+
+let age = prompt("Enter age");
+if(age>18){
+    alert("you can drive")
+}
+document.body.style.background = green;
+
