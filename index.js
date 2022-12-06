@@ -533,6 +533,27 @@ let w = [100,20,3,4];
 //35,37
 
 
+
+
+let x1 = document.getElementsByTagName('span')[0]
+console.log(x1)
+// let y = document.getElementsByTagName('span')[0]
+// console.dir(y)
+// console.log(document.body.firstChild.nodeName) 
+// console.log(document.body.firstElementChild.nodeName)
+
+// first.innerHTML 
+// first.innerHTML = "<i>hey I am italic</i>" 
+// first.outerHTML 
+// first.outerHTML = "<div>hey</div>"
+// document.body.firstChild.data 
+// console.log(document.body.textContent)
+// first.hidden = false
+
+
+
+
+
 //insertAdajacentHTML / Text / Element
 
 // first.insertAdjacentHTML('beforebegin','<div class="test">beforebegin</div>');
@@ -545,8 +566,30 @@ let w = [100,20,3,4];
 // },5000)
 // clearTimeout(a);
 
-const sum = (a,b,c) => {
-    console.log("Yes i Am" + (a+b+c))
-    a+b
+// const sum = (a,b,c) => {
+//     console.log("Yes i Am" + (a+b+c))
+//     a+b
+// }
+// setTimeout(sum,1000,1,2,7)
+//setTimeout mtb iss function ko  1 sec ke badh run kardho
+
+//setInterval mtb iss function ko itne hii 1 yaa any seconds mai run karte hii raho
+
+
+//events 
+
+let x = function(e){
+    alert("Helloworld1")
 }
-setTimeout(sum,1000,1,2,7)
+let y = function(e){
+    alert("Hello world2")
+}
+btn.addEventListener("click",x);
+
+btn.addEventListener("click",y);
+
+let a = prompt("What is your fav no");
+
+if(a =="2"){
+    btn.removeEventListener("click",x)
+}
