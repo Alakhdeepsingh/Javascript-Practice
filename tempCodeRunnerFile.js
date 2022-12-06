@@ -1,4 +1,4 @@
-let aw = prompt("Number");
-// aw = Number.parseInt(aw);
-// w.push(aw)
-// console.log(w)
+let a = setTimeout(function(){
+//     alert("I am inside of settimeout")
+// },5000)
+// clearTimeout(a);

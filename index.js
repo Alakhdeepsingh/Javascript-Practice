@@ -216,7 +216,7 @@
 
 
 //Program to add first n natural numbers
-const prompt = require("prompt-sync")({sigint: true});
+// const prompt = require("prompt-sync")({sigint: true});
 // let sum = 0;
 // let n = prompt("Entern the value of n")
 // n=Number.parseInt(n)
@@ -504,9 +504,49 @@ let w = [100,20,3,4];
 //we are trying to access html body that is js object
 
 
-let age = prompt("Enter age");
-if(age>18){
-    alert("you can drive")
-}
-document.body.style.background = green;
+// let age = prompt("Enter age");
+// if(age>18){
+//     alert("you can drive")
+// }
+// document.body.style.background = green;
+ 
+// const [a,b] = [1,2,3,4,5]
+// console.log(a)
+// console.log(b)
+//Output
+// 1
+// 2
 
+// console.log(parseInt("alakh"));
+// NaN : Not-a-Number
+
+// let c = document.getElementById("firstcardtitle")
+// c.style.color = "blue"
+
+// let cs = document.querySelectorAll(".card-title")
+// cs[0].style.color = "green"
+// cs[1].style.color = "yellow"
+
+// let z = document.getElementsByTagName("a")
+// z[0].style.color = "blue"
+
+//35,37
+
+
+//insertAdajacentHTML / Text / Element
+
+// first.insertAdjacentHTML('beforebegin','<div class="test">beforebegin</div>');
+// first.insertAdjacentHTML('afterbegin','<div class="test">afterbegin</div>');
+// first.insertAdjacentHTML('beforeend','<div class="test">beforeend</div>');
+// first.insertAdjacentHTML('afterend','<div class="test">afterend</div>');
+
+// let a = setTimeout(function(){
+//     alert("I am inside of settimeout")
+// },5000)
+// clearTimeout(a);
+
+const sum = (a,b,c) => {
+    console.log("Yes i Am" + (a+b+c))
+    a+b
+}
+setTimeout(sum,1000,1,2,7)
