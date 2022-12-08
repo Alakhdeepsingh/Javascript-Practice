@@ -1,3 +1,7 @@
+let a;  //declaration
+let a = 10; //initialization
+
+
 // let a = 10;
 // console.log(a);
 //Output
