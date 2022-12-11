@@ -351,6 +351,11 @@
 // Output
 // hello jayesh good person
 
+
+// let arr = [1,[1,3],[4]];
+
+
+
 // let friend = "    Alakh     "
 // console.log(friend.trim())
 //if we want to remove the space that is there in alakh then we can do using trim 
@@ -428,8 +433,8 @@
 // console.log(b.sort())
 // [ 50, 6, 70, 80 ]
 
-const number = [1,2,3,4,5,6];
-console.log(number.splice(2,1,23));
+// const number = [1,2,3,4,5,6];
+// console.log(number.splice(2,1,23));
 
 // const numbe = [1,2,3,4,5,6];
 // console.log(numbe.slice(2));
@@ -504,13 +509,45 @@ let w = [100,20,3,4];
 //we are trying to access html body that is js object
 
 
+
+// console.log(document.body.firstChild);
+//yehh keval ekk node ko uthayega
+// console.log(document.childNodes[0]);
+//yehh sarre nodes ko uthayega
+
+// console.log(document.body.lastChild);
+// console.log(document.childNodes.length-1); 
+// console.log(document.body.childNodes);
+// console.log(document.hasChildNodes());
+//it will check that kya child nodes hai and return true and false
+
+
+// let b = document.body;
+// console.log(b.firstChild)
+// console.log(b.firstElementChild)
+
+
+// console.log(document.body.firstChild)
+//this will give us any every element of html like comment and text etc 
+// console.log(document.body.firstElementChild)
+//this will give us specific element of html like head body  etc 
+
+// let t = document.body.firstElementChild.firstElementChild
+// console.log(t);
+
+// console.log(t.row)
+// console.log(t.caption) 
+// console.log(t.tHead)
+
+
+
 // let age = prompt("Enter age");
 // if(age>18){
 //     alert("you can drive")
 // }
 // document.body.style.background = green;
  
-// const [a,b] = [1,2,3,4,5]
+// const [a ,b] = [1,2,3,4,5]
 // console.log(a)
 // console.log(b)
 //Output
@@ -520,8 +557,8 @@ let w = [100,20,3,4];
 // console.log(parseInt("alakh"));
 // NaN : Not-a-Number
 
-// let c = document.getElementById("firstcardtitle")
-// c.style.color = "blue"
+let c = document.getElementById("firstcardtitle")
+c.style.color = "pink"
 
 // let cs = document.querySelectorAll(".card-title")
 // cs[0].style.color = "green"
@@ -530,7 +567,6 @@ let w = [100,20,3,4];
 // let z = document.getElementsByTagName("a")
 // z[0].style.color = "blue"
 
-//35,37
 
 
 
@@ -668,13 +704,35 @@ let w = [100,20,3,4];
 //hoisting
 // jitni bhi function declaration hai vo uppar aajati hai js mai but initialization will be not
 // Variable initializations are not hoisted, only variable declarations are hoisted:
-hoistedVariable = 3;
-console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
-var hoistedVariable;
+// hoistedVariable = 3;
+// console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+// var hoistedVariable;
 
 
 //91
 //arrow function
-var a = ['a','v','f'];
-a[100]='f';
-console.log(a.length)
+// var a = ['a','v','f'];
+// a[100]='f';
+// console.log(a.length)
+
+
+
+//dom
+//settimeout setinterval
+//callbacks
+//promise
+//then catch 
+//async await
+//local storage 
+//session storage 
+//destructing and spread operators
+//hoisting 
+//closure
+//arrow Function
+
+//react , components of react, advatages of react, 
+//virtual dom , events, state, usestate, useeffect
+
+//flex box , boxmodel
+
+
