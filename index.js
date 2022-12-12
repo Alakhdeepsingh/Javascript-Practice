@@ -1,3 +1,7 @@
+let a;  //declaration
+let a = 10; //initialization
+
+
 // let a = 10;
 // console.log(a);
 //Output
@@ -620,6 +624,7 @@ let w = [100,20,3,4];
 
 
 
+<<<<<<< HEAD
 //87
 // Destructuring & Spread Operators
 //destructuring assignment values nikalata hai array and object se alag alag variable mai
@@ -678,3 +683,8 @@ var hoistedVariable;
 var a = ['a','v','f'];
 a[100]='f';
 console.log(a.length)
+=======
+if(a =="2"){
+    btn.removeEventListener("click",x)
+}
+>>>>>>> f634be3046e1fa38aba59d4a267f905eae5bfa0e
