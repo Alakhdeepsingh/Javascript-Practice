@@ -428,8 +428,8 @@
 // console.log(b.sort())
 // [ 50, 6, 70, 80 ]
 
-// const number = [1,2,3,4,5,6];
-// console.log(number.splice(2,1,23));
+const number = [1,2,3,4,5,6];
+console.log(number.splice(2,1,23));
 
 // const numbe = [1,2,3,4,5,6];
 // console.log(numbe.slice(2));
@@ -535,8 +535,8 @@ let w = [100,20,3,4];
 
 
 
-let x1 = document.getElementsByTagName('span')[0]
-console.log(x1)
+// let x1 = document.getElementsByTagName('span')[0]
+// console.log(x1)
 // let y = document.getElementsByTagName('span')[0]
 // console.dir(y)
 // console.log(document.body.firstChild.nodeName) 
@@ -578,18 +578,103 @@ console.log(x1)
 
 //events 
 
-let x = function(e){
-    alert("Helloworld1")
-}
-let y = function(e){
-    alert("Hello world2")
-}
-btn.addEventListener("click",x);
+// let x = function(e){
+//     alert("Helloworld1")
+// }
+// let y = function(e){
+//     alert("Hello world2")
+// }
+// btn.addEventListener("click",x);
 
-btn.addEventListener("click",y);
+// btn.addEventListener("click",y);
 
-let a = prompt("What is your fav no");
+// let a = prompt("What is your fav no");
 
-if(a =="2"){
-    btn.removeEventListener("click",x)
-}
+// if(a =="2"){
+//     btn.removeEventListener("click",x)
+// }
+
+
+
+
+//call back
+
+//function inside function is call back actually js is synchromous language
+//now but due to call back we can do asynchronous inside js 
+
+
+// function show(a){
+//     //this func is call back function
+//     console.log("I am Show Function")
+// }
+// function geeky(callback){
+//     var a = 10;
+//     callback(a);
+//     console.log("hello")
+// }
+// console.log("hey1")
+// geeky(show);
+// console.log("hey")
+
+
+
+
+
+//87
+// Destructuring & Spread Operators
+//destructuring assignment values nikalata hai array and object se alag alag variable mai
+//  let arr = [3,5,8]
+
+//  let[a,b,c] = arr;
+//  console.log(a,b,c)
+ //Output
+//  3 5 8
+// let a = arr[0];
+// let b = arr[1];
+
+// let arr1 = [3,5,8,12,34]
+// let[v,r,m,...rest] = arr1;
+// console.log(v,r,m,rest)
+ //Output
+// 3 5 8 [ 12, 34 ]
+
+// let {a,b } = {a:1, b:5}
+// console.log(a,b);
+
+
+// Spread Operators
+// convert array to object
+// The JavaScript spread operator (...) allows us to quickly copy all or part of an existing array or object into another array or object.
+// The spread operator is often used in combination with destructuring.
+// let arr4 = [3,5,4]
+// let obj = {...arr4};
+// console.log(obj);
+ //Output
+// { '0': 3, '1': 5, '2': 4 }
+
+
+// function sum(v1,v2,v3){
+//     return v1+v2+v3;
+// }
+// console.log(sum(...arr4))
+
+
+//generator function
+
+
+
+
+//89
+//hoisting
+// jitni bhi function declaration hai vo uppar aajati hai js mai but initialization will be not
+// Variable initializations are not hoisted, only variable declarations are hoisted:
+hoistedVariable = 3;
+console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+var hoistedVariable;
+
+
+//91
+//arrow function
+var a = ['a','v','f'];
+a[100]='f';
+console.log(a.length)
