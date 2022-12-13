@@ -587,6 +587,35 @@ c.style.color = "pink"
 // first.hidden = false
 
 
+//matches
+// matches will check that is that class is there in that particular element
+let id1 = document.getElementById("id1")
+//Output
+{/* <div id="id1" class="box">This is an element</div> */}
+// console.log(id1)
+// console.log(id1.matches(".box"))
+//Output
+//true
+
+//closest
+//contains
+
+
+//innerHTML
+//if we want to take out html part then we will use innerhtml
+// console.log(id1.innerHTML);
+//Output
+// This is an element
+
+//outerHTML
+//in outerHTML whole htl comes means full innerhtml+the element itself
+// console.log(id1.outerHTML);
+//Output
+{/* <div id="id1" class="box">This is an element</div> */}
+
+// we can set value also in the
+id1.outerHTML = "<div>Hello</div>"
+console.log(id1.outerHTML);
 
 
 
