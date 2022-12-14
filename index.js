@@ -557,8 +557,8 @@ let w = [100,20,3,4];
 // console.log(parseInt("alakh"));
 // NaN : Not-a-Number
 
-let c = document.getElementById("firstcardtitle")
-c.style.color = "pink"
+// let c = document.getElementById("firstcardtitle")
+// c.style.color = "pink"
 
 // let cs = document.querySelectorAll(".card-title")
 // cs[0].style.color = "green"
@@ -589,7 +589,7 @@ c.style.color = "pink"
 
 //matches
 // matches will check that is that class is there in that particular element
-let id1 = document.getElementById("id1")
+// let id1 = document.getElementById("id1")
 //Output
 {/* <div id="id1" class="box">This is an element</div> */}
 // console.log(id1)
@@ -614,9 +614,26 @@ let id1 = document.getElementById("id1")
 {/* <div id="id1" class="box">This is an element</div> */}
 
 // we can set value also in the
-id1.outerHTML = "<div>Hello</div>"
-console.log(id1.outerHTML);
+// id1.outerHTML = "<div>Hello</div>"
+// console.log(id1.outerHTML);
+//Output
+{/* <div id="id1" class="box">This is an element</div> */}
 
+//let first = document.getElementById("id1")
+//let a = first.getAttribute("class")
+//console.log(a);
+//Output
+//box
+
+// let first = document.getElementById("id1")
+// let a = first.hasAttribute("class")
+// console.log(a);
+//Output
+// true
+
+// let first = document.getElementById("id1")
+// let a = first.setAttribute("class", "true")
+// console.log(a);
 
 
 //insertAdajacentHTML / Text / Element
@@ -625,6 +642,10 @@ console.log(id1.outerHTML);
 // first.insertAdjacentHTML('afterbegin','<div class="test">afterbegin</div>');
 // first.insertAdjacentHTML('beforeend','<div class="test">beforeend</div>');
 // first.insertAdjacentHTML('afterend','<div class="test">afterend</div>');
+
+//classlist
+
+
 
 // let a = setTimeout(function(){
 //     alert("I am inside of settimeout")
@@ -662,6 +683,16 @@ console.log(id1.outerHTML);
 
 
 
+//callback // asynchronous
+
+// console.log("yoyo")
+// setTimeout(function(){
+//     console.log("hey")
+// },8000)
+// console.log("hello")
+
+
+
 //call back
 
 //function inside function is call back actually js is synchromous language
@@ -673,7 +704,7 @@ console.log(id1.outerHTML);
 //     console.log("I am Show Function")
 // }
 // function geeky(callback){
-//     var a = 10;
+//     var a = 10; 
 //     callback(a);
 //     console.log("hello")
 // }
@@ -683,6 +714,77 @@ console.log(id1.outerHTML);
 
 
 
+// setTimeout (function(){
+//     console.log("timer");
+// },5000);
+
+// function x(y){
+//     console.log("x");
+//     y();
+// }
+// function y()
+// x(y(){
+//     console.log("y");
+// });
+// y is call back function over here
+
+// const perone = (friend) =>{
+//     console.log(`I am busy ${friend}`)
+// }
+// const pertwo = () =>{
+//     console.log("hello")
+// }
+// perone("friend");
+// pertwo();
+// I am busy friend
+// hello
+
+
+// y is call back function over here
+
+// const perone = (friend,callfrd) =>{
+//     console.log(`I am busy ${friend}`)
+//     callfrd();
+// }
+// const pertwo = () =>{
+//     console.log("hello")
+// }
+// perone("friend",pertwo);
+//pertwo is call back function
+// I am busy friend
+// hello
+
+
+// function loadScript(src, callback) {
+//     var script = document.createElement("script");
+//     script.src = src;
+//     script.onload = function() {
+//       console.log("Loaded script with SRC: " + src)
+//       callback(null, src);
+//     }
+//     script.onerror = function() {
+//       console.log("Error loading script with SRC: " + src);
+//       callback(new Error("Src got some error"))
+//     }
+//     document.body.appendChild(script);
+//   }
+//   function hello(error, src) {
+//     if (error) {
+//       console.log(error)
+//       return
+//     }
+//     alert('Hello World!' + src);
+//   }
+//   function goodmorning(error, src) {
+    
+//     if (error) {
+//       console.log(error)
+//       sendEmergencyMessageToCeo();
+//       return
+//     }
+//     alert('Good morning' + src);
+//   } 
+//   loadScript("https://cdn.jsdelikvkdvvr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js", goodmorning) 
 
 
 //87
