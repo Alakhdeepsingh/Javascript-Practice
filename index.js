@@ -150,7 +150,7 @@
 // { alakh: 'hello', section: 1, friend: 'Shubham', name: 'Alakh' }
 
 //though h is const but then also we can change inside values of different keys because
-//object h is reference to alakh and section , though we cannot change the value of hai
+//object h is reference to alakh and section , though we cannot change the value of h
 
 
 // const dict = {
@@ -181,8 +181,8 @@
 // This is a valid age
 
 
-
-// let age = 29;
+// let age = prompt("hello");
+// // let age = 29;
 // if(age>=10 && age<=20){
 //     console.log("good");
 // }
@@ -433,8 +433,9 @@
 // console.log(b.sort())
 // [ 50, 6, 70, 80 ]
 
-// const number = [1,2,3,4,5,6];
-// console.log(number.splice(2,1,23));
+const number = [1,2,3,4,5,6];
+console.log(number.splice(2,1,23));
+
 
 // const numbe = [1,2,3,4,5,6];
 // console.log(numbe.slice(2));
@@ -503,7 +504,7 @@ let w = [100,20,3,4];
 
 
 //dom
-//html ke page ko object banna diya jatta hai and usse dom bol dette hai 
+//it is a tree like structure, html ke page ko object banna diya jatta hai and usse dom bol dette hai 
 
 // document.body 
 //we are trying to access html body that is js object
@@ -893,29 +894,61 @@ let w = [100,20,3,4];
 // })
 
 
-let a1 = new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-        resolve("value3");
-    },1000);
-});
-let a2 = new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-        // resolve("value3");
-        reject(new Error("Error"));
-    },2000);
-});
-let a3 = new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-        resolve("value3");
-    },3000);
-});
+// let a1 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("value3");
+//     },1000);
+// });
+// let a2 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         // resolve("value3");
+//         reject(new Error("Error"));
+//     },2000);
+// });
+// let a3 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("value3");
+//     },3000);
+// });
 
-let promise_all = Promise.allSettled([a1,a2,a3])
-promise_all.then((value)=>{
-    console.log(value)
-})
+// let promise_all = Promise.allSettled([a1,a2,a3])
+// promise_all.then((value)=>{
+//     console.log(value)
+// })
   
 
+//59
+
+//async / await
+// hamm kisi bhi function ko async banna sakte hai and uske badh 
+//uske andar promise ko await kar sakte hai
+//async function always return a promise
+// basically we stop function execution
+ async function harry(){
+    let delhiweather = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("27 Deg")
+        },2000)
+    })
+}
+let bangaloreweather = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve("21 Deg")
+    },5000)
+})
+    console.log("fetching delhi weather please wait ...")
+    let delhiw = await delhiweather
+    console.log("fetched delhi weather:" + delhiw)
+    console.log("fetching banglore weather please wait...")
+    let banglorew = await bangaloreweather
+    console.log("fetched bangalore weather" + banglorew)
+    return [delhiw,banglorew]
+
+console.log("welcome to weather control room")
+let a = harry()
+a.then((value)=>{
+    console.log(value)
+})
 
 //87
 // Destructuring & Spread Operators
@@ -985,7 +1018,7 @@ promise_all.then((value)=>{
 //then catch 
 //async await
 //local storage 
-//session storage 
+//session storage  
 //destructing and spread operators
 //hoisting 
 //closure
