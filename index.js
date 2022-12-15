@@ -787,6 +787,136 @@ let w = [100,20,3,4];
 //   loadScript("https://cdn.jsdelikvkdvvr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js", goodmorning) 
 
 
+//promise
+// promise has two properties state and results
+//initially state is pending after then state become fulfilled or rejected 
+//benefits of promise is parallely execute hojaega
+// let promise = new Promise(function(resolve, reject) {
+//     alert("Hello, world!");
+    
+// })
+// console.log("hello one")
+// setTimeout(function(){
+//     console.log("YOYO");
+// },2000)
+// console.log("Hello three")
+// console.log(promise);
+
+// hello one
+// Hello three
+// Promise {56}
+// YOYO
+
+
+//promise can either be resolved or rejected if resolved then it will give us value and
+//if rejected then i will give us error
+// let p1 = new Promise((resolve, reject) => {
+//     console.log("Promise is pending")
+//     setTimeout(()=>{
+//         // console.log("I am a promise and  i am fulfilled")
+//         resolve(true)
+//         // reject(new Error("I am an error"))
+//     },5000)
+// })
+
+// let p2 = new Promise((resolve, reject) => {
+//     console.log("Promise is pending")
+    // setTimeout(()=>{
+        // console.log("I am a promise and  i am rejected")
+        // resolve(true)
+//         reject(new Error("I am an error"))
+//     },5000)
+// }) 
+// p1.then((value)=>{
+//     console.log(value) 
+// })
+// p2.catch((error)=>{
+//     console.log("some error occur in p2")
+// })
+// p1.then((value)=>{
+//     cons
+// })
+
+
+
+// let p3 = new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//         resolve("I am a promise and")
+//     },2000)
+// })
+// p3.then((value)=>{
+//     console.log(value)
+//     let p5 = new Promise((resolve, reject)=>{
+//         resolve("promise2")
+//     })
+//     return p5
+// }).then((value)=>{
+//     console.log("yoyo")
+// })
+// return ;
+
+// let p9 = new Promise((resolve, reject){
+
+// })
+
+// in mutiple handler we don't need to return 
+
+
+
+// let a1 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("value3");
+//     },1000);
+// });
+// let a2 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("value3");
+//     },2000);
+// });
+// let a3 = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("value3");
+//     },3000);
+// });
+// // a1.then((value)=>{
+// //     console.log(value)
+// // })
+// // a2.then((value)=>{
+// //     console.log(value)
+// // })
+// // a3.then((value)=>{
+// //     console.log(value)
+// // })
+// let promise_all = Promise.all([a1,a2,a3])
+// promise_all.then((value)=>{
+//     console.log(value)
+// })
+
+
+let a1 = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve("value3");
+    },1000);
+});
+let a2 = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        // resolve("value3");
+        reject(new Error("Error"));
+    },2000);
+});
+let a3 = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve("value3");
+    },3000);
+});
+
+let promise_all = Promise.allSettled([a1,a2,a3])
+promise_all.then((value)=>{
+    console.log(value)
+})
+  
+
+
 //87
 // Destructuring & Spread Operators
 //destructuring assignment values nikalata hai array and object se alag alag variable mai
