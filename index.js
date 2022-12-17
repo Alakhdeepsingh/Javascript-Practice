@@ -930,7 +930,6 @@ let w = [100,20,3,4];
             resolve("27 Deg")
         },2000)
     })
-}
 let bangaloreweather = new Promise((resolve, reject)=>{
     setTimeout(()=>{
         resolve("21 Deg")
@@ -943,7 +942,7 @@ let bangaloreweather = new Promise((resolve, reject)=>{
     let banglorew = await bangaloreweather
     console.log("fetched bangalore weather" + banglorew)
     return [delhiw,banglorew]
-
+}
 console.log("welcome to weather control room")
 let a = harry()
 a.then((value)=>{
