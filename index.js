@@ -959,8 +959,26 @@ let w = [100,20,3,4];
 //fetch api
 //kabhi bhi hamhe network se data mangwana hotta hai tho hamm fetch api ka use karte hai
 
+// let value2;
+// let p = fetch("https://goweather.herokuapp.com/weather/la")
+// p.then((response)=>{
+//     console.log(response.status)
+//     console.log(response.ok)
+//     // 200
 
- 
+
+//     console.log(response)
+//     // true
+//     return response.json()
+// }).then((value2)=>{
+//     console.log(value2);
+//     console.log(value2.temperature)
+//     document.getElementById("pappibhai");
+//     let textNode =  document. createTextNode(value2.temperature);
+//     document.body.appendChild(textNode);
+})
+
+
 
 
 //87
