@@ -924,31 +924,44 @@ let w = [100,20,3,4];
 //uske andar promise ko await kar sakte hai
 //async function always return a promise
 // basically we stop function execution
- async function harry(){
-    let delhiweather = new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve("27 Deg")
-        },2000)
-    })
-}
-let bangaloreweather = new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-        resolve("21 Deg")
-    },5000)
-})
-    console.log("fetching delhi weather please wait ...")
-    let delhiw = await delhiweather
-    console.log("fetched delhi weather:" + delhiw)
-    console.log("fetching banglore weather please wait...")
-    let banglorew = await bangaloreweather
-    console.log("fetched bangalore weather" + banglorew)
-    return [delhiw,banglorew]
+//  async function harry(){
+//     let delhiweather = new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             resolve("27 Deg")
+//         },2000)
+//     })
+// let bangaloreweather = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("21 Deg")
+//     },5000)
+// })
+//     console.log("fetching delhi weather please wait ...")
+//     let delhiw = await delhiweather
+//     console.log("fetched delhi weather:" + delhiw)
+//     console.log("fetching banglore weather please wait...")
+//     let banglorew = await bangaloreweather
+//     console.log("fetched bangalore weather" + banglorew)
+//     return [delhiw,banglorew]
+// }
+// console.log("welcome to weather control room")
+// let a = harry()
+// a.then((value)=>{
+//     console.log(value)
+// })
 
-console.log("welcome to weather control room")
-let a = harry()
-a.then((value)=>{
-    console.log(value)
-})
+// welcome to weather control room
+// fetching delhi weather please wait ...
+// fetched delhi weather:27 Deg
+// fetching banglore weather please wait...
+// fetched bangalore weather21 Deg
+
+
+//fetch api
+//kabhi bhi hamhe network se data mangwana hotta hai tho hamm fetch api ka use karte hai
+
+
+ 
+
 
 //87
 // Destructuring & Spread Operators
