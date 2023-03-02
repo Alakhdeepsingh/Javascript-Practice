@@ -6,7 +6,7 @@
 // console.log(a);
 //Output
 // Alakh
-//this shows js is dynamically language because we can change it datatype like first it was number the it is string in it's runtime as we have changed a=10 to a="Harry"
+//this shows js is dynamically language because we can change it datatype like first it was number then it is string in it's runtime as we have changed a=10 to a="Harry"
 
 // variables names can start with $,_,alphabets
 // let $ac = 5;
@@ -65,10 +65,22 @@
 // 5
 // 5
 
+
 // var a = 10;
 // var a = "Harry";
 // console.log(a);
 //var can be redeclared
+// Output
+// Harry
+
+// let a = 10;
+// let a = "Harry";
+// console.log(a);
+//let cannot be redeclared
+// let a = 10;
+//     ^
+// SyntaxError: Identifier 'a' has already been declared
+
 
 // let a = 10;
 // let a = 20;
@@ -124,30 +136,31 @@
 
 //Practice set 1
 
-// let a = "alakh";
-// let b = 18;
+// let a = 18;
+// let b = "alakh";
 // console.log(a+b);
 // console.log(typeof (a+b));
 //Output
-// alakh18
+// 18alakh
 // string
-// yaad rakna ki string mai number add kar rahe hai matlab ki a mai b add kar rahe hai isliye string type print hoo raha hai a+b karne parr
+// yaad rakna ki string & number add kar rahe hai isliye string type print hoo raha hai a+b karne parr
 
 // const h = {
 //     alakh : "hello",
 //     section : 1
 // };
-//alakh is key and hello is value
+//alakh is key and hello is value in object
+
 
 // h['friend']="Shubham"
 // to add value in object we have written in above line
 
 // h['name']="Alakh"
 // changing the value of name in object h
-// h[alakh] = 3;
+// h['alakh'] = 3;
 // console.log(h);
 
-// { alakh: 'hello', section: 1, friend: 'Shubham', name: 'Alakh' }
+// { alakh: 3, section: 1, friend: 'Shubham', name: 'Alakh' }
 
 //though h is const but then also we can change inside values of different keys because
 //object h is reference to alakh and section , though we cannot change the value of h
@@ -214,12 +227,19 @@
 // you cannot drive
 // Yes
 
+// const prompt = require("prompt-sync")({sigint: true});
+// The prompt-sync module is a function that creates prompting functions, so you need to call prompt-sync in order to get your actual prompting function.
+// Once you’ve loaded the prompt-sync module and called it, using it to retrieve user input is relatively straightforward
+// The prompt() function returns the user feedback, so simply store that return value to a variable to use it later.
+// By default, most terminal programs will exit with Ctrl + C (This sends a SIGINT, or “signal interrupt” message indicating that a user wants to exit a program). With prompt-sync, in order to make sure that your users can exit at will, add a configuration object with sigint: true when invoking the prompt-sync function:
+
 
 //Program to add first n natural numbers
-// const prompt = require("prompt-sync")({sigint: true});
 // let sum = 0;
 // let n = prompt("Entern the value of n")
 // n=Number.parseInt(n)
+// The Number.parseInt() static method parses a string argument and returns an integer of the specified radix or base.
+// parseInt() parses a string and returns the first integer, first integer means like if number is 10.33 then it will return 10
 // for(let i = 0; i<n; i++){
 //     sum += (i+1)
 // }
@@ -304,8 +324,6 @@
 //strings
 
 
-
-
 //template  literal are backtics instead of quotes to define a string
 //backtik  
 //string interpolation : we can insert variable directly in backtik using dollar sign
@@ -358,6 +376,8 @@
 
 // let friend = "    Alakh     "
 // console.log(friend.trim())
+// Output
+//Alakh
 //if we want to remove the space that is there in alakh then we can do using trim 
 
 //string is immutable means whatever we put function on name , 
@@ -368,8 +388,11 @@
 // 4
 
 // let text = "Hello world, welcome to the universe.";
-// text.startsWith("Hello");
-
+// let ans = text.startsWith("Hello");
+// console.log(ans);
+// true
+// startsWith() method returns true if a string starts with a specified string.
+// Otherwise it returns false.
 
 // let name = "ALAKH";
 // console.log(name.toLowerCase());
@@ -398,8 +421,11 @@
 // object
 //array is a type of an object
 
-// console.log(a.join("sdf"))
+// console.log(a.join("-"))
 // 10-20-30-alakh
+// console.log(a.join("alakhdeep"))
+// 10alakhdeep20alakhdeep30alakhdeep40
+
 
 // console.log(a.pop())
 // 40
@@ -433,8 +459,8 @@
 // console.log(b.sort())
 // [ 50, 6, 70, 80 ]
 
-const number = [1,2,3,4,5,6];
-console.log(number.splice(2,1,23));
+// const number = [1,2,3,4,5,6];
+// console.log(number.splice(2,1,23));
 
 
 // const numbe = [1,2,3,4,5,6];
@@ -481,7 +507,7 @@ console.log(number.splice(2,1,23));
 // console.log(ee)
 // [ 1, 2, 3, 4, 5 ]
 
-let w = [100,20,3,4];
+// let w = [100,20,3,4];
 // let aw = prompt("Number");
 // aw = Number.parseInt(aw);
 // w.push(aw)
@@ -694,19 +720,282 @@ let w = [100,20,3,4];
 
 
 
+
+// 1) Register
+// 2)Send Welcome Email
+// 3)Login
+// 4)Set user data
+// 5)Display user data
+
+
+// function register(){
+//     console.log("register end");
+// }
+// function sendemail(){
+//     console.log("email end")
+// }
+// function login(){
+//     console.log("login end")
+// }
+// function getuserdata(){
+//     console.log("got user data")
+// }
+// function displayuserdata(){
+//     console.log("user data displayed")
+// } 
+// register();
+// sendemail();
+// login();
+// getuserdata();
+// displayuserdata();
+
+// console.log("other application work");
+
+//this is synchronous : line by line it will work
+
+
+
+// function waitForThreeSeconds(){
+//     let ms = 3000 + new Date().getTime();
+//     while(new Date()<ms){}
+// }
+// function register(){
+//     waitForThreeSeconds();
+//     console.log("register end");
+// }
+// function sendemail(){
+//     waitForThreeSeconds();
+//     console.log("email end")
+// }
+// function login(){
+//     waitForThreeSeconds();
+//     console.log("login end")
+// }
+// function getuserdata(){
+//     waitForThreeSeconds();
+//     console.log("got user data")
+// }
+// function displayuserdata(){
+//     waitForThreeSeconds();
+//     console.log("user data displayed")
+// } 
+// register();
+// sendemail();
+// login();
+// getuserdata();
+// displayuserdata();
+
+// console.log("other application work");
+//jaruri nhi hai ki time set add karne se hii async banata hai ,keval set time out se async banata hai
+//abhi yehh program synch hai , kyoki yehh line bhi line print kar raha hai
+//abhi isme problem yehh hai ki agar "other application work"
+//mai koi time boundation nhi hai but vo at the end print hoo raha hai kyoki 
+//yehhh synch program hai
+
+
+
+// function register(){
+//         setTimeout(()=>{
+//             console.log("register end");
+//         },1000)
+      
+//     }
+//     function sendemail(){
+//         setTimeout(()=>{
+//             console.log("email end")
+//         },1000)
+//     }
+//     function login(){
+//         setTimeout(()=>{
+//             console.log("login end")
+//         },1000)
+        
+//     }
+//     function getuserdata(){
+//         setTimeout(()=>{
+//             console.log("got user data")
+//         },3000)
+//     }
+//     function displayuserdata(){
+//         setTimeout(()=>{
+//             console.log("user data displayed")
+//         },1000)
+//     } 
+//     register();
+//     sendemail();
+//     login();
+//     getuserdata();
+//     displayuserdata();
+
+//     console.log("other application work");
+
+
+
+
+
+
+    // function register(a){
+    //     setTimeout(()=>{
+    //         console.log("register end");
+    //         a();
+    //     },3000)
+    // }
+    // function sendemail(b){
+    //     setTimeout(()=>{
+    //         console.log("email end")
+    //         b();
+    //     },1000)
+    // }
+    // function login(c){
+    //     setTimeout(()=>{
+    //         console.log("login end")
+    //         c();
+    //     },1000)
+    // }
+    // function getuserdata(d){
+    //     setTimeout(()=>{
+    //         console.log("got user data")
+    //         d();
+    //     },3000)
+    // }
+    // function displayuserdata(){
+    //     setTimeout(()=>{
+    //         console.log("user data displayed")
+    //     },1000)
+    // } 
+    //callback hell
+    // register(function a(){
+    //     sendemail(function b(){
+    //         login(function c(){
+    //             getuserdata(function d(){
+    //                 displayuserdata();  
+    //             });
+    //         });
+    //     });
+    // });
+    // console.log("other application work");
+
+
+
+
+    // function register(a){
+    //     setTimeout(()=>{
+    //         console.log("register end");
+    //         a();
+    //     },3000)
+    // }
+    // function sendemail(b){
+    //     setTimeout(()=>{
+    //         console.log("email end")
+    //         b();
+    //     },1000)
+    // }
+    // function login(c){
+    //     setTimeout(()=>{
+    //         console.log("login end")
+    //         c();
+    //     },1000)
+    // }
+    // function getuserdata(d){
+    //     setTimeout(()=>{
+    //         console.log("got user data")
+    //         d();
+    //     },3000)
+    // }
+    // function displayuserdata(){
+    //     setTimeout(()=>{
+    //         console.log("user data displayed")
+    //     },1000)
+    // } 
+    // // callback hell
+    // register(function a(){
+    //     sendemail(function b(){
+    //         login(function c(){
+    //             getuserdata(function d(){
+    //                 displayuserdata();  
+    //             });
+    //         });
+    //     });
+    // });
+    // console.log("other application work");
+
+
+
+    // function register(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("register end");
+    //             resolve();
+    //             // a();
+    //         },3000)
+    //     })
+    // }
+    // function sendemail(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("email end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+
+    // function login(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("login end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function getuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("get user data")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function displayuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("user data displayed")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+   
+    // // callback hell
+    // register()
+    //     .then(sendemail)
+    //     .then(login)
+    //     .then(getuserdata)
+    //     .then(displayuserdata);
+      
+    // console.log("other application work");
+
+
+
 //call back
 
-//function inside function is call back actually js is synchromous language
+//function inside function is call back actually js is synchromous language so to make asynchronous
+//we use call back , A callback is a function passed as an argument to another function
+//This technique allows a function to call another function
+//A callback function can run after another function has finished
 //now but due to call back we can do asynchronous inside js 
+
 
 
 // function show(a){
 //     //this func is call back function
 //     console.log("I am Show Function")
 // }
-// function geeky(callback){
+// function geeky(show){
 //     var a = 10; 
-//     callback(a);
+//     show(a);
 //     console.log("hello")
 // }
 // console.log("hey1")
@@ -788,7 +1077,10 @@ let w = [100,20,3,4];
 //   loadScript("https://cdn.jsdelikvkdvvr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js", goodmorning) 
 
 
+
 //promise
+
+
 // promise has two properties state and results
 //initially state is pending after then state become fulfilled or rejected 
 //benefits of promise is parallely execute hojaega
@@ -924,10 +1216,8 @@ let w = [100,20,3,4];
 //uske andar promise ko await kar sakte hai
 //async function always return a promise
 // basically we stop function execution
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> b5384dc0cec6ab3c0959b7dadc01de87bd70cd14
+
+
 //  async function harry(){
 //     let delhiweather = new Promise((resolve, reject)=>{
 //         setTimeout(()=>{
@@ -980,39 +1270,34 @@ let w = [100,20,3,4];
 //     document.getElementById("pappibhai");
 //     let textNode =  document. createTextNode(value2.temperature);
 //     document.body.appendChild(textNode);
-})
+// })
 
 
+//  async function harry(){
+//     let delhiweather = new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             resolve("27 Deg")
+//         },2000)
+//     })
+// let bangaloreweather = new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("21 Deg")
+//     },5000)
+// })
+//     console.log("fetching delhi weather please wait ...")
+//     let delhiw = await delhiweather
+//     console.log("fetched delhi weather:" + delhiw)
+//     console.log("fetching banglore weather please wait...")
+//     let banglorew = await bangaloreweather
+//     console.log("fetched bangalore weather" + banglorew)
+//     return [delhiw,banglorew]
+// }
+// console.log("welcome to weather control room")
+// let a = harry()
+// a.then((value)=>{
+//     console.log(value)
+// })
 
-<<<<<<< HEAD
-=======
-=======
- async function harry(){
-    let delhiweather = new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve("27 Deg")
-        },2000)
-    })
-let bangaloreweather = new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-        resolve("21 Deg")
-    },5000)
-})
-    console.log("fetching delhi weather please wait ...")
-    let delhiw = await delhiweather
-    console.log("fetched delhi weather:" + delhiw)
-    console.log("fetching banglore weather please wait...")
-    let banglorew = await bangaloreweather
-    console.log("fetched bangalore weather" + banglorew)
-    return [delhiw,banglorew]
-}
-console.log("welcome to weather control room")
-let a = harry()
-a.then((value)=>{
-    console.log(value)
-})
->>>>>>> 12a2ae7ab3ff9b6b756cf2d69726de14e3cbcc26
->>>>>>> b5384dc0cec6ab3c0959b7dadc01de87bd70cd14
 
 //87
 // Destructuring & Spread Operators
