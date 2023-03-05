@@ -967,15 +967,90 @@
     //         },1000)
     //     })
     // }
-   
+     
     // // callback hell
     // register()
+    //jabh resolve call hotta hai tabh agla then bhi call hojaega
+    //jesse hii register function resolve hojaegi uske badh then function automatically chalega
     //     .then(sendemail)
+    //then will call all the functions like sendemail , login etc
     //     .then(login)
     //     .then(getuserdata)
     //     .then(displayuserdata);
       
     // console.log("other application work");
+
+
+
+
+     function register(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+               return reject("Error while registering");
+                console.log("register end");
+                // a();
+            },1000)
+        })
+    }
+    function sendemail(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("email end")
+                resolve();
+                // b();
+            },1000)
+        })
+    }
+
+    function login(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("login end")
+                resolve();
+                // b();
+            },1000)
+        })
+    }
+    function getuserdata(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("get user data")
+                resolve();
+                // b();
+            },1000)
+        })
+    }
+    function displayuserdata(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("user data displayed")
+                resolve();
+                // b();
+            },1000)
+        })
+    }
+     
+    // callback hell
+    register()
+    // jabh resolve call hotta hai tabh agla then bhi call hojaega
+    // jesse hii register function resolve hojaegi uske badh then function automatically chalega
+        .then(sendemail)
+    // then will call all the functions like sendemail , login etc
+        .then(login)
+        .then(getuserdata)
+        .then(displayuserdata)
+        .catch((err)=>{
+            console.log('Error:',err)
+        })
+    console.log("other application work");
+
+    // other application work
+    // Error: Error while registering
+
+
+
+
+    // async/await
 
 
 
