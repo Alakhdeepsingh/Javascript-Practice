@@ -787,7 +787,7 @@
 
 // console.log("other application work");
 //jaruri nhi hai ki time set add karne se hii async banata hai ,keval set time out se async banata hai
-//abhi yehh program synch hai , kyoki yehh line bhi line print kar raha hai
+//abhi yehh program synch hai , kyoki yehh line by line print kar raha hai
 //abhi isme problem yehh hai ki agar "other application work"
 //mai koi time boundation nhi hai but vo at the end print hoo raha hai kyoki 
 //yehhh synch program hai
@@ -835,9 +835,11 @@
 
 
     // function register(a){
+    //higher order function is that function jho dusre function 
+    //ko as a parameters le sakti hai yaa phir ekk function ko return karti hai
     //     setTimeout(()=>{
     //         console.log("register end");
-    //         a();
+    //         z();
     //     },3000)
     // }
     // function sendemail(b){
@@ -863,7 +865,7 @@
     //         console.log("user data displayed")
     //     },1000)
     // } 
-    //callback hell
+    // // callback hell
     // register(function a(){
     //     sendemail(function b(){
     //         login(function c(){
@@ -983,66 +985,68 @@
 
 
 
-     function register(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-               return reject("Error while registering");
-                console.log("register end");
-                // a();
-            },1000)
-        })
-    }
-    function sendemail(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                console.log("email end")
-                resolve();
-                // b();
-            },1000)
-        })
-    }
+    //  function register(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //       
+    //             console.log("register end");
+    //              resolve();
+    //             // a();
+    //         },1000)
+    //     })
+    // }
+    // function sendemail(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("email end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
 
-    function login(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                console.log("login end")
-                resolve();
-                // b();
-            },1000)
-        })
-    }
-    function getuserdata(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                console.log("get user data")
-                resolve();
-                // b();
-            },1000)
-        })
-    }
-    function displayuserdata(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                console.log("user data displayed")
-                resolve();
-                // b();
-            },1000)
-        })
-    }
+    // function login(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("login end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function getuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("get user data")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function displayuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("user data displayed")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
      
-    // callback hell
-    register()
-    // jabh resolve call hotta hai tabh agla then bhi call hojaega
-    // jesse hii register function resolve hojaegi uske badh then function automatically chalega
-        .then(sendemail)
-    // then will call all the functions like sendemail , login etc
-        .then(login)
-        .then(getuserdata)
-        .then(displayuserdata)
-        .catch((err)=>{
-            console.log('Error:',err)
-        })
-    console.log("other application work");
+    // // callback hell
+    // register()
+    // // jabh resolve call hotta hai tabh agla then bhi call hojaega
+    // // jesse hii register function resolve hojaegi uske badh then function automatically chalega
+    //     .then(sendemail)
+    // // then will call all the functions like sendemail , login etc
+    //then mtb yehh hai ki mann lo register call hua sabh se phele tikh hai naa 
+    //     .then(login)
+    //     .then(getuserdata)
+    //     .then(displayuserdata)
+    //     .catch((err)=>{
+    //         console.log('Error:',err)
+    //     })
+    // console.log("other application work");
 
     // other application work
     // Error: Error while registering
@@ -1050,8 +1054,505 @@
 
 
 
-    // async/await
+// async/await
 
+// int a(int b,int c){
+    // int add = b+c; //5 5
+    // return add;    //10
+// }
+
+
+
+
+//code visually synchronous dikhega but hotta hai vo asynchronous 
+
+//we can use awit inside function
+
+//iska mtb yehh hai ki register ko call karo and wait karo , jabh takh register
+//call end nhi hotta hai tabh takh hamme aage nhi bardna hai   
+//await hamm ussi function ke andar use kar sakte hai jho async function hai 
+
+
+// function register(){
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 console.log("register end");
+//                 resolve();
+//                 // a();
+//             },1000)
+//         })
+//     }
+//     function sendemail(){
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 console.log("email end")
+//                 resolve();
+//                 // b();
+//             },1000)
+//         })
+//     }
+
+//     function login(){
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 console.log("login end")
+//                 resolve();
+//                 // b();
+//             },1000)
+//         })
+//     }
+//     function getuserdata(){
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 console.log("get user data")
+//                 resolve();
+//                 // b();
+//             },1000)
+//         })
+//     }
+//     function displayuserdata(){
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 console.log("user data displayed")
+//                 resolve();
+//                 // b();
+//             },1000)
+//         })
+//     }
+//     async function authenticate(){
+//         await register();
+//         await sendemail();
+//         await login();
+//         await getuserdata();
+//         await displayuserdata();
+//     }
+//     authenticate();
+
+//     console.log("other application work");
+
+
+    // function register(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("register end");
+    //             resolve();
+    //             // a();
+    //         },1000)
+    //     })
+    // }
+    // function sendemail(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("email end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+
+    // function login(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("login end")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function getuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("get user data")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // function displayuserdata(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             console.log("user data displayed")
+    //             resolve();
+    //             // b();
+    //         },1000)
+    //     })
+    // }
+    // async function authenticate(){
+    //     await register();
+    //     await sendemail();
+    //     await login();
+    //     await getuserdata();
+    //     await displayuserdata();
+    // }
+    // authenticate().then(()=>{
+    //     console.log('baap');
+    // });
+
+    // console.log("other application work");
+
+//kisi bhi function mai hamm async use karte hai vo by default promise return kar detti hai 
+//mtb ki authenciate function  ka result ekk promise hai  mtb ki hamm  then ka use kar sakte hai 
+
+//promise uppar se return hota hai mtb ki displayuserdata,getuserdata etc functions promise return kar rahe hai , tho hamm dono use kar sakte hai niche authenticate mai jesse ki async await or  
+//then function for making code asynchronous
+
+
+// function register(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("register end");
+//             resolve();
+//             // a();
+//         },1000)
+//     })
+// }
+// function sendemail(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             // resolve();
+//             return reject('Error while sending email');
+//             console.log("email end")
+//             // b();
+//         },1000)
+//     })
+// }
+
+// function login(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("login end")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function getuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("get user data")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function displayuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("user data displayed")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// async function authenticate(){
+//     await register();
+//     await sendemail();
+//     await login();
+//     await getuserdata();
+//     await displayuserdata();
+// }
+// authenticate().then(()=>{
+//     console.log('baap');
+// }).catch((er)=>{
+//     console.log(er)
+// })
+//reject agar koi function karega tho seedha error catch ke andar aayega
+
+// console.log("other application work");
+
+
+
+// function register(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("register end");
+//             resolve();
+//             // a();
+//         },1000)
+//     })
+// }
+// function sendemail(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             // resolve();
+//             return reject('Error while sending email');
+//             console.log("email end")
+//             // b();
+//         },1000)
+//     })
+// }
+
+// function login(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("login end")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function getuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("get user data")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function displayuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("user data displayed")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// async function authenticate(){
+//     try{
+//         await register();
+//         await sendemail();
+//         await login();
+//         await getuserdata();
+//         await displayuserdata();
+//     }
+//     catch(err){
+//         console.log(err);
+//     }
+// }
+// authenticate().then(()=>{
+//     console.log('baap');
+// })
+// other application work
+// register end
+// Error while sending email
+// baap
+
+// why authenticate() is printing baap is because
+// we have not used error handing in that function
+//as if we use then we return before console.log and the thing not get print  
+
+// console.log("other application work");
+
+
+
+// function register(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("register end");
+//             resolve();
+//             // a();
+//         },1000)
+//     })
+// }
+// function sendemail(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             // resolve();
+//             return reject('Error while sending email');
+//             console.log("email end")
+//             // b();
+//         },1000)
+//     })
+// }
+
+// function login(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("login end")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function getuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("get user data")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function displayuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("user data displayed")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// async function authenticate(){
+//     try{
+//         await register();
+//         await sendemail();
+//         await login();
+//         await getuserdata();
+//         await displayuserdata();
+//     }
+//     catch(err){
+//         console.log(err);
+//         throw new Error(); 
+//     }
+// }
+// authenticate().then(()=>{
+//     console.log('baap');
+// }).catch((err)=>{
+//     console.log(err);
+// })
+
+// console.log("other application work");
+
+//abhi uppar wallw code mai authenticate ki error handling nhi thi kyoki usme hamne 
+//error nhi daala tha isliye hamne throw new error likha hai yehh kya karega authenticate mai
+//error daal dhega phir hamara baap print nhi hogha , ekk eoor dhe dhega lekin agar hamm 
+//auhenticate function ke andar catch use karenge tho throw new error jho bhi error dhega vo authenticate function catch kar legha
+
+
+//how to get access data that is written inside resolve and we are passing that data using resolve function
+
+// function register(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("register end");
+//             resolve('success');
+//             // a();
+//         },1000)
+//     })
+// }
+// function sendemail(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+            
+//             // return reject('Error while sending email');
+//             console.log("email end")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+
+// function login(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("login end")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function getuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("get user data")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// function displayuserdata(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("user data displayed")
+//             resolve();
+//             // b();
+//         },1000)
+//     })
+// }
+// async function authenticate(){
+//     try{
+//         const message = await register();
+//                         await sendemail();
+//                         await login();
+//                         await getuserdata();
+//                         await displayuserdata();
+//                         console.log(message);
+        
+//     }
+//     catch(err){
+//         console.log(err);
+//         // throw new Error(); 
+//     }
+// }
+// authenticate().then(()=>{
+//     console.log('baap');
+// }).catch((err)=>{
+//     console.log(err);
+// })
+
+// console.log("other application work");
+
+
+
+
+
+//NAMASTE JS SEASON - 2
+
+//promises
+
+// const cart = ["shoes","pants","kurtas"];
+
+// createOrder(cart);
+
+
+//promise is an empty object 
+//in callback we pass a function to another function
+//we are attaching a call back function to  promise object
+
+
+//fetch()
+//fetch functions return us a promise 
+
+
+//three states inside the promise
+//pending,fulfill and rejected
+ 
+
+
+// const GITHUB_API = "https://api.github.com/users"
+// const user = fetch(GITHUB_API);
+//user will get promise object because fetch return promise 
+// console.log(user)
+
+// promise in immutable
+
+// const promise = createOrder(cart);
+// promise.then(function(orderID)){
+//     proceedToPayment(OrderID);
+// }
+//these both are equal we can write anything
+
+
+// createOrder(cart)
+// .then(function(orderID){
+//     proceedToPayment(OrderID);
+// })
+// .then(function(paymentInfo){
+//     showOrderSummary(paymentInfo);
+// })
+// .then(function(paymentInfo){
+//     updateWalletBalance(paymentInfo);
+// })
+
+
+// createOrder(cart)
+// .then((orderID) => proceedToPayment(OrderID))
+// .then((paymentInfo) => showOrderSummary(paymentInfo))
+// .then((paymentInfo) => updateWalletBalance(paymentInfo));
+
+
+    //output
+
+    // other application work
+    // register end
+    // email end
+    // login end
+    // get user data
+    // user data displayed
+    // success
+    // baap
 
 
 //call back
