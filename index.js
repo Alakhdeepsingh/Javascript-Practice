@@ -1555,6 +1555,17 @@
     // baap
 
 
+
+
+
+//the whole think is called execution contest and inside there are two things that
+//1)memory componenet : In this we write functions and vaiables values stored in key value format
+//2)code component : in this we write whole Javascript code
+
+
+
+
+
 //call back
 
 //function inside function is call back actually js is synchromous language so to make asynchronous
