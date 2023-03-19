@@ -1733,11 +1733,33 @@
 //     function c(){
 //         console.log(b);
 //     }
-// }
+// } 
 // a();
 //Output
 //10
 
+// function a(){
+//
+//  
+//         console.log(b);
+//  
+// }
+// var b = 10; 
+// a();
+//Output
+//10
+
+// function a(){
+//    var b = 10;
+//    c();
+//     function c(){
+//         console.log(b);
+//     }
+// } 
+// a();
+// console.log(b);
+//Output
+//b is not defined because of scope 
 
 
 //call back
