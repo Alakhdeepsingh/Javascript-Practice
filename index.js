@@ -1739,6 +1739,17 @@
 //10
 
 // function a(){
+//     c();
+//      function c(){
+//          console.log(b);
+//      }
+//  }
+//  var b = 10; 
+//  a();
+//Output
+//10
+
+// function a(){
 //
 //  
 //         console.log(b);
@@ -1760,6 +1771,12 @@
 // console.log(b);
 //Output
 //b is not defined because of scope 
+
+
+//Lecture 9
+
+// Let and const 
+
 
 
 //call back
