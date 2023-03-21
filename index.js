@@ -1787,6 +1787,11 @@
 // 8. Initialising variables at the top is good idea, helps shrinks TDZ to zero.
 
 
+//Lecture 12
+
+//Closures in JS
+
+
 
 
 //call back
