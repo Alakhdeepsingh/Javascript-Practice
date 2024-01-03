@@ -5,6 +5,7 @@
 //19) Promises
 //20) Creating promise, chaining, error handling
 //21) async await
+//22)this keyword
 
 //19) Callback hell
 // 1 - Callback hell
