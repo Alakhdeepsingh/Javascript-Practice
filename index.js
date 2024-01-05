@@ -1712,7 +1712,7 @@
 // Scope Chain, Scope & Lexical Environment 
 
 
-// 0) Lexical environment = EC's Local Memory + Reference to Lexical Environment of its parent.
+// 0) Lexical environment = Execution Context's Local Memory + Reference to Lexical Environment of its parent.
 
 // 1) Lexical Environment of its parent is the scope where a function is physically present or defined. So, suppose a function x(), is defined and invoked in the GEC, when function x()'s EC is pushed in the call stack, it stores a reference to its parent's lexical environment i.e. the GEC's memory.
 
@@ -1791,7 +1791,18 @@
 
 //Closures in JS
 
+function x(){ 
+    var a = 7;
+    function y(){ 
+        console.log(a);
+    }
+    y();
+}
+x();
 
+// y is lexically inside x and x is lexically inside global scope
+//so, inside y function we can access a's value 
+//lexical means parent a is parent of y (I can say type of)
 
 
 //call back
@@ -2047,7 +2058,7 @@
 //     console.log("fetching delhi weather please wait ...")
 //     let delhiw = await delhiweather
 //     console.log("fetched delhi weather:" + delhiw)
-//     console.log("fetching banglore weather please wait...")
+//     console.log("f  etching banglore weather please wait...")
 //     let banglorew = await bangaloreweather
 //     console.log("fetched bangalore weather" + banglorew)
 //     return [delhiw,banglorew]
