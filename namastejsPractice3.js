@@ -7,6 +7,10 @@
 //21) async await
 //22)this keyword
 
+//15) Trust issue with settimeout
+
+// trust issue with settimeout means we can
+
 //19) Callback hell
 // 1 - Callback hell
 // When a function is passed as an argument to another function, it becomes a callback function. This process continues and there are many callbacks inside another's Callback function.
