@@ -11,7 +11,327 @@
 
 // trust issue with settimeout means we can
 
-//19) Callback hell
+// console.log("Start");
+//
+// setTimeout(function cb(){
+//  console.log("Callback");
+// })
+//
+// console.log("End");
+
+// first start will print, then we see settimeout, so it will register call back method into the webapi env that is cb.
+
+//suppose after console.log(end) there are million lines of code and it will take 10 sec to execute so after 10 sec it will go to the callback queue, basically global execution context is busy executing millions line of code and it will not check the callback queue, so after 10 sec it will go to the callback queue and remeber this function cb(), its time get over after 5 sec, but it will not execute, because global execution context is busy execution millions line of code and it will not check the callback queue, so after 10 sec it will go to the callback queue and remeber this function cb(), its time get over after 5 sec, but it will not execute, because global execution context is busy execution millions line of code and it will not check the callback queue, so after 10 sec it will go to the callback queue and finally after 10 sec it will execute the callback function cb().
+
+// suppose this is a program
+
+// console.log("start");
+
+// setTimeout(function cb(){
+//      console.log("CallBack function")
+// },5000)
+
+// console.log("end");
+
+// my question is that first settimeout will add this callback function cb inside web api env. then later it will add in callback queue
+
+// so my question is that when does cb goes to callback queue?
+// ChatGPT
+// In the given code, the setTimeout function schedules the callback function (cb) to be executed after a delay of 5000 milliseconds (5 seconds). Here's the sequence of events:
+
+// The console.log("start"); statement is executed immediately.
+
+// The setTimeout function is encountered, and it schedules the cb function to be executed after a delay of 5000 milliseconds. The setTimeout function does not block the execution of the program; it returns immediately, and the program moves on to the next line.
+
+// The console.log("end"); statement is executed immediately after the setTimeout function.
+
+// Now, the program has completed its execution, and the event loop comes into play.
+
+// After 5000 milliseconds, the callback function cb is moved to the callback queue.
+
+// Since the main thread is not blocked and the call stack is empty, the event loop takes the callback function from the callback queue and pushes it onto the call stack for execution.
+
+// The console.log("CallBack function"); statement inside the callback function is then executed.
+
+// In summary, the callback function (cb) goes to the callback queue after the specified delay of 5000 milliseconds, and it gets executed when the event loop retrieves it from the callback queue and pushes it onto the call stack.
+
+// so, in gec million of line of code are running so basicaaly call stack is not empty and that call back function cb after 5 sec comes inside the callback queue and then event loop will check that call stack is not empt as it is execution millions line of code so that is why it will not execute the callback function cb, so after 10 sec it will check the callback queue and it will execuete the callback function cb
+
+// console.log("Start");
+// function cb(){
+//     console.log("Callback");
+// }
+// setTimeout(cb,0);
+// console.log("End");
+
+// this is also a syntax of setTimeout
+
+//16) Higher order function
+// function higherOrderFunction() {
+//   // Returning a function
+//   return function a() {
+//     console.log("This is a function returned by the higher-order function");
+//   };
+// }
+
+// // Assigning the returned function to a variable
+// var returnedFunction = higherOrderFunction();
+// console.log(returnedFunction);
+// // Calling the returned function
+// returnedFunction();
+// console.log("end");
+
+// In JavaScript, a higher-order function is a function that either takes one or more functions as arguments or returns a function as its result. This concept is based on the idea of functions being first-class citizens in the language, meaning they can be treated as values and passed around just like any other data type.
+
+// There are two main types of higher-order functions: functions that take functions as arguments (callback functions) and functions that return functions (closure).
+
+// Functions as Arguments (Callback Functions):
+
+// javascript
+// Copy code
+// function higherOrderFunction(callback) {
+//   // Some code here
+//   callback(); // Calling the callback function
+// }
+
+// function callbackFunction() {
+//   console.log("This is a callback function");
+// }
+
+// // Passing a function as an argument
+// higherOrderFunction(callbackFunction);
+// In this example, higherOrderFunction is a higher-order function because it takes a function (callbackFunction) as an argument and invokes it.
+
+// Functions as Return Values (Closure):
+
+// javascript
+// Copy code
+// function higherOrderFunction() {
+//   // Returning a function
+//   return function() {
+//     console.log("This is a function returned by the higher-order function");
+//   };
+// }
+
+// // Assigning the returned function to a variable
+// var returnedFunction = higherOrderFunction();
+
+// // Calling the returned function
+// returnedFunction();
+// In this example, higherOrderFunction is a higher-order function because it returns a function. The returned function can be assigned to a variable (returnedFunction) and then invoked.
+
+// Higher-order functions are commonly used in functional programming and allow for more concise and expressive code. They enable the implementation of features like map, filter, and reduce in JavaScript, making it easier to work with arrays and collections.
+
+// User
+// function higherOrderFunction() {
+//   // Returning a function
+//   return function() {
+//     console.log("This is a function returned by the higher-order function");
+//   };
+// }
+
+// // Assigning the returned function to a variable
+// var returnedFunction = higherOrderFunction();
+
+// // Calling the returned function
+// returnedFunction();
+
+// please explain which line will run line by line
+// ChatGPT
+// Certainly! Let's go through the code step by step:
+
+// Function Declaration:
+
+// javascript
+// Copy code
+// function higherOrderFunction() {
+//   // Returning a function
+//   return function() {
+//     console.log("This is a function returned by the higher-order function");
+//   };
+// }
+// Here, you have a function named higherOrderFunction. This function doesn't take any parameters, but it returns another function.
+
+// Assigning the Returned Function to a Variable:
+
+// javascript
+// Copy code
+// var returnedFunction = higherOrderFunction();
+// The higherOrderFunction is called, and its result (which is a function) is assigned to the variable returnedFunction.
+
+// Calling the Returned Function:
+
+// javascript
+// Copy code
+// returnedFunction();
+// Finally, you call the function that was returned by higherOrderFunction. This results in the message "This is a function returned by the higher-order function" being printed to the console.
+
+// So, when you run this code:
+
+// The function higherOrderFunction is defined.
+// higherOrderFunction is invoked, and it returns a function.
+// The returned function is assigned to the variable returnedFunction.
+// The function stored in returnedFunction is called, and it prints the specified message to the console.
+// As a result, the output will be:
+
+// vbnet
+// Copy code
+// This is a function returned by the higher-order function
+
+//17) map,filter, & reduce
+
+// JavaScript, map, filter, and reduce are higher-order functions that operate on arrays. They provide a concise and expressive way to manipulate arrays.
+
+// map: It creates a new array by applying a given function to each element in the original array.
+
+// Example: Doubling each element in an array
+// const originalArray = [1, 2, 3, 4, 5];
+// const doubledArray = originalArray.map(num => num * 2);
+// console.log(doubledArray);
+
+// 1st way to write map function
+// function double(x) {
+//   return x * 2;
+// }
+// const output = originalArray.map(double);
+// console.log(output);
+
+//2nd way to write map function
+// const output = arr.map(function double(x) {
+//   return x * 2;
+// });
+
+// const doubledArray = originalArray.map((num) => {
+//   return num * 2;
+// });
+// console.log(doubledArray);
+
+// 3rd way to write map function if there is a single line then you can ignore return and curly braces and also you can ignore the function keyword and the name of the function because it is an anonymous function and you can also ignore the parenthesis of the parameter if there is only one parameter.
+
+// const doubledArrayss = originalArray.map((num) => num * 2);
+// console.log(doubledArrayss, "qwerty");
+
+// map function in JavaScript is a higher-order function that applies a provided function to each element of an array and returns a new array containing the results. The original array remains unchanged.
+
+// How map works:
+// Iterates Over Each Element: map iterates over each element in the original array.
+
+// Applies the Callback Function: For each element, it applies the provided callback function.
+
+// Builds a New Array: The return value of the callback function for each element is collected and forms a new array.
+
+// Returns the New Array: The resulting array, containing the mapped values, is returned.
+
+// filter: It creates a new array by filtering out elements from the original array based on a given condition.
+
+// javascript
+// Copy code
+// // Example: Filtering even numbers from an array
+// const originalArray = [1, 2, 3, 4, 5];
+// const evenNumbers = originalArray.filter(num => num % 2 === 0);
+// console.log(evenNumbers);
+
+// How it works:
+// Iterates Over Each Element: filter iterates over each element in the original array.
+
+// Applies the Callback Function: For each element, it applies the provided callback function.
+
+// Tests the Condition: The callback function returns true or false based on whether the current element passes the condition.
+
+// Builds a New Array: If the condition is true, the element is included in the new array; otherwise, it is excluded.
+
+// Returns the New Array: The resulting array, containing the filtered elements, is returned.
+
+// const originalArray = [1, 2, 3, 4, 5];
+
+// const evenNumbers = originalArray.filter(function(num) {
+//   return num % 2 === 0;
+// });
+
+// console.log(evenNumbers); // Output: [2, 4]
+// In this example, the filter function is used to create a new array (evenNumbers) containing only the even numbers from the originalArray.
+
+// Using Arrow Function (ES6+):
+// With ES6 arrow functions, the code becomes more concise:
+
+// javascript
+// Copy code
+// const originalArray = [1, 2, 3, 4, 5];
+
+// const evenNumbers = originalArray.filter(num => num % 2 === 0);
+
+// console.log(evenNumbers); // Output: [2, 4]
+
+//reduce
+
+// The reduce function in JavaScript is a higher-order function that iterates over the elements of an array and accumulates a single result. It's often used for operations where you need to reduce an array into a single value, such as summing up all elements, finding the maximum value, or concatenating strings. The original array can be transformed into a single output value.
+
+// Here's a more in-depth explanation of how reduce works:
+
+// Syntax:
+// javascript
+// Copy code
+// const result = array.reduce(callback(accumulator, currentValue[, index[, array]]) {
+//   // return updated accumulator
+// }, initialValue);
+// callback: The function that is applied to each element in the array. It takes four parameters:
+
+// accumulator: The accumulated result of the previous iterations. It starts with the initialValue or the first element of the array if no initialValue is provided.
+// currentValue: The current element being processed in the array.
+// index (optional): The index of the current element being processed.
+// array (optional): The array reduce was called upon.
+// initialValue: An optional parameter specifying the initial value of the accumulator. If not provided, the first element of the array is used as the initial accumulator value.
+
+// result: The final accumulated result after iterating over all elements in the array.
+
+// How it works:
+// Accumulator Initialization: If an initialValue is provided, the accumulator is set to that value. Otherwise, it is set to the first element of the array.
+
+// Iterates Over Each Element: reduce iterates over each element in the array.
+
+// Applies the Callback Function: For each element, the callback function is applied, taking the current accumulator value, the currentValue, and optionally the index and array.
+
+// Updates the Accumulator: The callback function returns the updated value of the accumulator, which is used in the next iteration.
+
+// Returns the Final Result: After iterating through all elements, the final value of the accumulator is returned as the result.
+
+// Example:
+// javascript
+
+// const array = [1, 2, 3, 4, 5];
+
+// function findSum(arr) {
+//   let sum = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     sum = sum + arr[i];
+//   }
+//   return sum;
+// }
+// console.log(findSum(arr));
+
+// const sum = array.reduce(function(accumulator, currentValue) {
+//   accumulator = accumulator + currentValue;
+// return accumulator;
+// }, 0);
+
+//currentValue is the current element of the array and the accumulator is the previous value of the current element of the array.
+//pplease refer the above program where sum is behaving like accumulator and currentValue is behaving like current element of the array
+
+// console.log(sum); // Output: 15
+// In this example, the reduce function is used to calculate the sum of all elements in the array starting from an initial accumulator value of 0.
+
+// Using Arrow Function (ES6+):
+// With ES6 arrow functions, the code becomes more concise:
+
+// javascript
+// Copy code
+// const array = [1, 2, 3, 4, 5];
+
+// const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+// console.log(sum); // Output: 15
+
+//18) Callback hell
 // 1 - Callback hell
 // When a function is passed as an argument to another function, it becomes a callback function. This process continues and there are many callbacks inside another's Callback function.
 // This grows the code horizontally instead of vertically. That mechanism is known as callback hell.
