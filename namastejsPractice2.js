@@ -119,6 +119,8 @@
 // 6
 // 6
 // 6
+//var i is not block scope so it is referring to the same memory so again and again when loop will run but i will be pointing to the same memory so it will print 6 6 6 6 6
+// and second reason is js loop don't wait for anything it will not wait for setimeout, solution is that if you want to print 1 2 3 4 5 then use let because let is block scope so whenever loop will run this i will be the new variable and when each time settimeout will run i has it's own identity means its own new copy which gets saved
 
 //why 6 is coming , is because i variable is refering to same memory and second reason is js loop don't wait for anything it will not wait for setimeout, solution is that if you want to print 1 2 3 4 5 then use let because let is block scope so whenever loop will run this i will be the new variable and when each time settimeout will run i has it's own identity means its own new copy which gets saved
 // function x() {
@@ -239,7 +241,7 @@
 // setTimeout(() => {
 //   console.log("deep");
 // }, 1000);
-// //bith code are same only syntax is different
+// //bith code are same only syntax is different so both will work same way, so when setTimeout function is called then inside it we are passing a function which is a callback function, so whenever the time expires then this callback function will going to be called and then it will going to be executed
 
 // function x(y) {
 //   console.log("x");
@@ -249,6 +251,15 @@
 //   console.log("y");
 // });
 // y is a callback function as we are passing in as a argument to another function, why do we say y function a call back function because we are giving it to another function as a argument, now when we call x function then it will going to print x and then it will going to call y function and then it will going to print y, so basically we are giving access to x function to call y function this is only a call back function, so whenever x function want then it will going to call y function, so this creates an async enviorment , as js is synch and single threaded means its runs code line by line
+
+// function a(b){
+//     b(10,20);
+// }
+// a(function b(s,q){
+//     console.log(s+q);
+// })
+//Output
+// 30
 
 // function attachEventListener() {
 //   let count = 0;

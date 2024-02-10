@@ -3,7 +3,8 @@
 //17) map,filter, & reduce
 //18) callback hell
 //19) Promises
-//20) Creating promise, chaining, error handling
+//20) a) Creating promise, chaining, error handling ,
+//b)  Promise APIs + Interview Questions
 //21) async await
 //22)this keyword
 
@@ -186,7 +187,13 @@
 
 // Example: Doubling each element in an array
 // const originalArray = [1, 2, 3, 4, 5];
-// const doubledArray = originalArray.map(num => num * 2);
+// const doubledArray = originalArray.map((num) => num * 2);
+// console.log(doubledArray);
+
+// const originalArray = [1, 2, 3, 4, 5];
+// const doubledArray = originalArray.map(function a(num) {
+//   return num * 2;
+// });
 // console.log(doubledArray);
 
 // 1st way to write map function
@@ -336,236 +343,546 @@
 // When a function is passed as an argument to another function, it becomes a callback function. This process continues and there are many callbacks inside another's Callback function.
 // This grows the code horizontally instead of vertically. That mechanism is known as callback hell.
 
-// console.log("Namaste");
-// setTimeout(function() {
-//     console.log("Javascript");
-// }, 5000)
+// function doTask1(callback) {
+//     setTimeout(function() {
+//       console.log("Task 1 completed");
+//       callback();
+//     }, 3000);
+//   }
 
+//   // function doTask2(callback) {
+//   //   setTimeout(function() {
+//   //     console.log("Task 2 completed");
+//   //     callback();
+//   //   }, 1000);
+//   // }
+
+//   // Function 3
+//   function doTask3(callback) {
+//     setTimeout(function() {
+//       console.log("Task 3 completed");
+//       callback();
+//     }, 1000);
+//   }
+
+//   // Callback hell example
+//   doTask1(function() {
+//     doTask2(function() {
+//       doTask3(function() {
+//         console.log("All tasks completed");
+//       });
+//     });
+//   });
+
+// function doTask1(callback) {
+//   setTimeout(function () {
+//     console.log("Task 1 completed");
+//     callback();
+//   }, 3000);
+// }
+
+// function doTask2(callback) {
+//   setTimeout(function() {
+//     console.log("Task 2 completed");
+//     callback();
+//   }, 1000);
+// }
+
+// Function 3
+// function doTask3(callback) {
+//   setTimeout(function () {
+//     console.log("Task 3 completed");
+//     callback();
+//   }, 1000);
+// }
+
+// // Callback hell example
+// doTask1(function a() {
+//   doTask2(function b() {
+//     doTask3(function c() {
+//       console.log("All tasks completed");
+//     });
+//   });
+// });
 // 2 - Inversion of control
 // The callback function is passed to another callback, this way we lose the control of our code. We don't know what is happening behind the scene and the program becomes very difficult to maintain.
 // That process is called inversion of control.
 
-//19)
-// 1. Before promise we used to depend on callback functions which would result in 1.) Callback Hell (Pyramid of doom) | 2.) Inversion of control
-// 2. Inversion of control is overcome by using promise.
-//   2.1) A promise is an object that represents eventual completion/failure of an asynchronous operation.
-//   2.2) A promise has 3 states: pending | fulfilled | rejected.
-//   2.3)  As soon as promise is fulfilled/rejected => It updates the empty object which is assigned undefined in pending state.
-//   2.4) A promise resolves only once and it is immutable.
-//   2.5) Using .then() we can control when we call the cb(callback) function.
+//19) Promises
 
-// 3. To avoid callback hell (Pyramid of doom) => We use promise chaining. This way our code expands vertically instead of horizontally. Chaining is done using '.then()'
-// 4. A very common mistake that developers do is not returning a value during chaining of promises. Always remember to return a value. This returned value will be used by the next .then()
+// Promises are a way to handle asynchronous operations in JavaScript. They are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code.
 
-// Importance of promise is that we do not loose the control of the program, a promise object is immutable and can be send anywhere without worrying about changes, also it resolves only once either to success or failure.
+// const cart = ["shoes", "pants", "kurta"];
+// createOrder(cart); //order Id
+// proceedToPayment(orderId); //payment Id
+// so over here we are creating an order and then we are proceeding to payment, so we are doing two asynchronous operations over here, as proceedToPayment function is dependent on createOrder function like when the order is created then only we can proceed to payment, so we are doing two asynchronous operations over here, so we can use promises to handle these two asynchronous operations
 
-// const cart = ["shoes","pants","kurta"];
-//
-// createOrder(cart, function(orderId){
-//      proceedtoPayment(orderID);
+// createOrder(cart, function (orderId) {
+//   proceedToPayment(orderId);
 // });
-// //this is the call back function
-// now it is the responsibilty of createorder function to create an order and then will call the function function
-// but there is a imp issue that is IOC ( inversion of control ),  we have passed this call back function to create order API and now we are sitting back
-// relax that at some point of time this createorder function will call function but who knows create order api never call our call back function
-// we can't blindly trust the API
-//
+// so this is the callback way of handling asynchronous operations, but there is issue that we have pass the callback function inside the createOrder function and then sitting that inside the code will work
+// so we can use promises to handle these two asynchronous operations
+
+// const promisedd = createOrder(cart);
+// promise is nothing but an empty promise object with some data value in it and it will hold some whatever the value is returned by the createOrder function, now we don't know that how much time it will take to create the order, but this line will return a promise object like this {data:undefined, status:pending, value:undefined} and then we can use then method to handle the value returned by the createOrder function, so lets say after some 5 sec it will create a order and fill this promise object
+// {data:orderDetails, status:resolved, value:orderDetails} then .then method
+// with the value returned by the createOrder function
+
+// so now we will attach .then in front of promisedd object and then we will pass a function inside, so now comes question what is .then and why are we using it, so .then is a method which is used to handle the value returned by the promise object, so when the value is returned by the promise object then it will call the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method, so now we can use the value returned by the promise object inside the function inside the .then method, so let me explain you one simplest example of promise
+// const promisedd = new Promise(function (resolve, reject) {
+//   setTimeout(function () {
+//     resolve("Order Id");
+//   }, 3000);
+// });
+// promisedd.then(function (orderId) {
+//   console.log(orderId);
+// });
+//so let me explain that what does new keyword does, so new keyword is used to create a new object, so new Promise is used to create a new promise object, and then we are passing a function inside the new Promise,whateever written after new ovr here it is written Promise so we can write anything in place of promise no, Here, Promise is not a placeholder that you can replace with anything. It is the constructor for the Promise object. The function you pass to it is the executor function, which takes resolve and reject functions as arguments. The executor function is called immediately by the Promise implementation, and it runs before the Promise constructor even returns the created object. The resolve and reject functions, when called, resolve or reject the promise, respectively. So, the executor function is where you perform the asynchronous operation, and when it's done, you call resolve or reject to resolve or reject the promise. The setTimeout function is used to simulate an asynchronous operation that takes 3 seconds to complete. After 3 seconds, the resolve function is called with the value "Order Id". The then method is used to handle the value returned by the promise object. When the promise is resolved, the function inside then is called with the value "Order Id". So, the output will be "Order Id" after 3 seconds.
+
+
+// in call back function we pass callback function but in promise we attach the function to the promise object
 // const promise = createOrder(cart);
-//
-// promise.then(function(orderId){
-//      proceedtoPayment(orderID);
+// promise.then(function (orderId) {
+//   proceedToPayment(orderId);
+// });
+//first let me explai what does .then does, so .then is a method which is used to handle the value returned by the promise object, so when the value is returned by the promise object then it will call the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method, so now we can use the value returned by the promise object inside the function inside the .then method, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations, so this is what .then does, so know lets see what does resolve does, so resolve is a function which is used to resolve the promise object, so when the value is returned by the promise object then it will call the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method, so now we can use the value returned by the promise object inside the function inside the .then method, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations, so this is what .then does, so know lets see what does resolve does, resolve basically calls the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method
+
+
+
+So, to clarify, resolve doesn't call the function inside the then method. Instead, it triggers the execution of the then method, and the value passed to resolve is then passed as an argument to the callback function inside then.
+
+The .then method in a Promise is used to attach callbacks that will be executed when the promise is successfully resolved. It allows you to handle the result of an asynchronous operation or the value that a promise eventually fulfills with
+
+
+// so let me explain with the help of an example by writing all the name like promise, then, function, orderId, proceedToPayment, createOrder, cart, so that you can understand that what is happening over here, so createOrder is a function which is used to create an order and it takes cart as an argument and then it will return a promise object, so createOrder(cart) will return a promise object and then we are attaching a function to the promise object using then method, so when the value is returned by the promise object then resolve( when used ) will call the function inside the then method and then it will pass the value returned by the promise object to the function inside the then method, so now we can use the value returned by the promise object inside the function inside the then method, so when the order is created then it will call the function inside the then method and then it will pass the order id to the function inside the then method and then we can use the order id inside the function inside the then method and then we are passing the order id to the proceedToPayment function, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations
+
+// three states of promise object are pending, resolved, rejected
+
+// const GITHUB_API_URL = "https://api.github.com/users/alakhdeep";
+// const user = fetch(GITHUB_API_URL);
+// console.log(user);
+//so in this example when doing console.log(user) then in the console promise state is coming pending because fetch returns promise so as js works very fast so const user line will be executed and at that time it will be in the pending state thats why it has printed poending but later on after few sec it will be resolved and then it will print the data of the user in the console log basically it will print the response of the fetch api , promise state resolved and value will be the response of the fetch api
+
+//   promise objects are immutable, so once a promise object is resolved or rejected, it cannot be changed. This is why the promise object is in a pending state when it is created and then transitions to either resolved or rejected. The value of the promise object is set when it is resolved or rejected, and it cannot be changed after that.
+
+//so in callback function there is problem of callbackhell
+// so in promise there is no problem of callback hell
+// const cart = ["shoes", "pants", "kurta"];
+// createOrder(cart,function(orderId){
+//     proceedToPayment(orderId,function(paymentId){
+//          showorderSummary(paymentId,function(summary){
+//                  updateWalletBalance();
+//          })
+//     })
 // })
-//
-//
-// In JavaScript, functions and methods are often used interchangeably, but there is a subtle distinction. A method is a function that is a property of an object. In the case of the .then syntax used with Promises, it is technically a method because it is a function that is a property of a Promise object.
-//
-//
-// // Assume createOrder is a function that returns a Promise and takes a cart as a parameter
+// so this is callback hell, where createOrder is dependent on proceedToPayment and proceedToPayment is dependent on showorderSummary and showorderSummary is dependent on updateWalletBalance,
+//  so we can use promises to handle these asynchronous operations, basically promise chaning is used to handle multiple promises at the same time
+
+//promise chain is used to handle multiple promises at the same time
+
+
 // const promise = createOrder(cart);
-
-// // The createOrder function is now executing asynchronously. It may involve operations like
-// // making API calls, database queries, or any other asynchronous tasks related to creating an order.
-
-// // Once the asynchronous operation inside createOrder is complete, the Promise is either resolved or rejected.
-
-// // Now, we attach a callback function using .then to handle the resolved value of the Promise.
-// promise.then(function(orderId) {
-//     // This function will be executed when the Promise is resolved.
-
-//     // Inside this function, we have access to the orderId, which is the resolved value of the Promise.
-
-//     // Now, we call the proceedtoPayment function and pass the orderId as an argument.
-//     proceedtoPayment(orderId);
-
-//     // Note: The actual implementation of proceedtoPayment is not provided, but it's assumed to be a function
-//     // that takes an orderId as a parameter and handles the payment process.
+// promise.then(function (orderId) {
+//      proceedToPayment(orderId);
 // });
-
-// // The main thread of execution continues immediately after the promise is created,
-// // and it doesn't wait for the asynchronous operation inside createOrder to complete.
-// // Instead, it continues with the rest of the code, if any.
-
-// // createOrder(cart) is a function that returns a Promise, initiating an asynchronous operation (e.g., creating an order).
-// // promise is a Promise object representing the asynchronous operation triggered by createOrder(cart).
-// // .then is used to attach a callback function that will be executed when the Promise is resolved.
-// // The callback function receives the resolved value of the Promise, assumed to be an orderId.
-// // Inside the callback function, proceedtoPayment(orderId) is called to handle the payment process with the orderId.
-// // The main thread of execution continues immediately after creating the Promise, and the callback inside .then will be executed later when the Promise is resolved.
-// // Note: The actual behavior might vary based on the implementation of createOrder and the behavior of the asynchronous operation it performs.
-// //
-// //
-// // Callbacks Disadvantages:
-// Callback Hell or Pyramid of Doom:
-
-// When dealing with multiple asynchronous operations or nested callbacks, the code structure can become deeply nested, leading to readability issues. This is commonly referred to as "Callback Hell" or the "Pyramid of Doom."
-
-// Example:
-
-// javascript
-// Copy code
-// asyncFunction1(arg1, function(result1) {
-//     asyncFunction2(result1, function(result2) {
-//         asyncFunction3(result2, function(result3) {
-//             // and so on...
-//         });
-//     });
-// });
-// Error Handling:
-
-// Error handling in callback-based code can be challenging. If an error occurs deep within the nested callbacks, it may be difficult to trace and handle effectively.
-// Limited Composability:
-
-// Composing and chaining multiple asynchronous operations can be complex and less modular with callbacks.
-// Promises Advantages:
-// Chaining and Readability:
-
-// Promises provide a more readable and flat structure for handling asynchronous code. The .then method allows you to chain multiple asynchronous operations in a more linear fashion.
-
-// Example:
-
-// javascript
-// Copy code
-// asyncFunction1(arg1)
-//     .then(result1 => asyncFunction2(result1))
-//     .then(result2 => asyncFunction3(result2))
-//     .catch(error => console.error(error));
-// Error Handling:
-
-// Promises have built-in mechanisms for error handling through the .catch method, making it easier to handle errors in a centralized manner.
-
-// Example:
-
-// javascript
-// Copy code
-// asyncFunction()
-//     .then(result => /* handle result */)
-//     .catch(error => /* handle error */);
-// Promise.all and Promise.race:
-
-// Promises provide utility methods like Promise.all and Promise.race, which make it easier to work with multiple asynchronous operations concurrently.
-
-// Example:
-
-// javascript
-// Copy code
-// Promise.all([asyncFunction1(), asyncFunction2(), asyncFunction3()])
-//     .then(results => /* handle results */)
-//     .catch(error => /* handle error */);
-// Transform Callback-Based APIs:
-
-// Promises can be used to transform callback-based APIs into a more modern and readable format.
-
-// Example:
-
-// javascript
-// Copy code
-// const promisedApiCall = () => {
-//     return new Promise((resolve, reject) => {
-//         // Callback-based API logic
-//         apiCall((error, result) => {
-//             if (error) {
-//                 reject(error);
-//             } else {
-//                 resolve(result);
-//             }
-//         });
-//     });
-// };
-// In summary, while callbacks are a valid mechanism for handling asynchronous code, Promises offer advantages in terms of readability, error handling, and composability. Promises have become a standard in modern JavaScript for managing asynchronous operations, and they serve as a foundation for the even more advanced async/await syntax introduced in ECMAScript 2017.
-//
-//
-//
-// fetch function returns promise
-// const GITHUB_API = "https://........"
-// const user - fetch (GITHUB_API)
-// in user we will get the promise object
-//
-//In the provided code snippet, you are using the fetch function to make an asynchronous request to the GitHub API. The fetch function returns a Promise, and its behavior in terms of being pending, fulfilled, or rejected depends on the completion of the asynchronous operation.
-
-// Here's a breakdown of the Promise lifecycle in this context:
-
-// javascript
-// Copy code
-// const GITHUB_API = "https://api.github.com/users/username"; // Replace 'username' with an actual GitHub username
-// const userPromise = fetch(GITHUB_API);
-
-// // userPromise is now a Promise object.
-
-// // At this point, the Promise is in a pending state because the asynchronous operation (fetching data) is in progress.
-
-// userPromise
-//     .then(response => {
-//         // If the request is successful (status code 2xx), the Promise is fulfilled.
-//         // The 'response' object contains information about the HTTP response.
-//         // This doesn't necessarily mean the data is available yet.
-
-//         if (!response.ok) {
-//             // If the response status is not okay, reject the Promise.
-//             throw new Error(`HTTP error! Status: ${response.status}`);
-//         }
-
-//         // If the response is okay, return the JSON parsed data.
-//         return response.json();
-//     })
-//     .then(userData => {
-//         // At this point, the Promise is fulfilled with the JSON-parsed data.
-//         // 'userData' contains the actual data retrieved from the API.
-
-//         console.log(userData);
-//     })
-//     .catch(error => {
-//         // If an error occurs at any point in the Promise chain, the Promise is rejected.
-//         // The 'error' object contains information about the error.
-
-//         console.error(error);
-//     });
-// Here's a brief summary:
-
-// Pending State:
-
-// The Promise is in the pending state as soon as fetch is called, and it represents an ongoing asynchronous operation (the HTTP request to the GitHub API).
-// Fulfilled State:
-
-// If the HTTP request is successful (status code 2xx), the first .then block is executed, and the Promise is fulfilled. The response.json() method returns another Promise that resolves with the JSON-parsed data.
-// Rejected State:
-
-// If an error occurs at any point in the Promise chain (e.g., network error, non-2xx HTTP status), the Promise is rejected, and the .catch block is executed.
-// The Promise returned by fetch helps in managing the asynchronous nature of the network request and provides a clean way to handle both successful and unsuccessful outcomes.
-
-//
-//
-// Promise chain
-//
 // createOrder(cart)
-//  .then(function (ordrId){
-//      return proceedToPayment(orderID);
-//  })
-//  .then(function(paymentInfo){
-//      return showOrderSummary(paymentInfo);
-//  })
-//  .then(function (paymentInfo){
-//      return updateWalletBalace(paymentInfo)
-//  })
-//
-// Don't forget to add return
-//
+// .then(function (orderId) {
+//      proceedToPayment(orderId);
+// });
+
+// we can write code in these two manners to handle the asynchronous operations using promises and promise chaining
+
+// createOrder(cart)
+// .then(function (orderId) {
+//      proceedToPayment(orderId);
+// });
+// .then(function (paymentId) {
+//      showorderSummary(paymentId);
+// });
+// .then(function (summary) {
+//      updateWalletBalance();
+// });
+//so let me do the dry run of the code in depth so createOrder(cart) will return a promise object and then we are attaching a function to the promise object using then method, so when the value is returned by the promise object then resolve( when used ) will call the function inside the then method and then it will pass the value returned by the promise object to the function inside the then method, so now we can use the value returned by the promise object inside the function inside the then method, so when the order is created then it will call the function inside the then method and then it will pass the order id to the function inside the then method and then we can use the order id inside the function inside the then method and then we are passing the order id to the proceedToPayment function, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations, so this is what .then does, so know lets see what does resolve does, resolve basically calls the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method
+
+// createOrder(cart)
+// .then(function (orderId) {
+//      return proceedToPayment(orderId);
+// });
+// .then(function (paymentId) {
+//      return showorderSummary(paymentId);
+// });
+// .then(function (summary) {
+//      return updateWalletBalance();
+// });
+
+//so why we use return over here, so we use return over here because we want to pass the value returned by the promise object to the next then method, so when the value is returned by the promise object then resolve( when used ) will call the function inside the then method and then it will pass the value returned by the promise object to the function inside the then method, so now we can use the value returned by the promise object inside the function inside the then method, so when the order is created then it will call the function inside the then method and then it will pass the order id to the function inside the then method and then we can use the order id inside the function inside the then method and then we are passing the order id to the proceedToPayment function, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations, so this is what .then does, so know lets see what does resolve does, resolve basically calls the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method
+
+// we can write this code like this also 
+// createOrder(cart)
+// .then(orderId) =>  proceedToPayment(orderId));
+// .then(paymentId) => showorderSummary(paymentId));
+// .then(summary) => updateWalletBalance(summary);
+// so this is the arrow function way of writing the code and this is the most concise way of writing the code
+
+// 2nd example :
+// const promise1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 1 resolved");
+//   }, 1000);
+// });
+// const promise2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 2 resolved");
+//   }, 2000);
+// });
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 3 resolved");
+//   }, 3000);
+// });
+//promise1.then((result) => {
+//   console.log(result);
+//   return promise2;
+// }).then((result) => {
+//   console.log(result);
+//   return promise3;
+// }).then((result) => {
+//   console.log(result);
+// });
+
+
+
+// 19) Creating promise, chaining, error handling
+
+// const cart = ["shoes", "pants", "kurta"];
+
+// createOrder(cart)
+// .then(function (orderId) {
+//      console.log(orderId);
+//      return orderId;
+// })
+// .catch(function (err) {
+//     console.log(err.message);
+// });
+// .then(function (orderId) {
+//     return proceedToPayment(orderId);
+// })
+// .then(function (paymentId) {
+//     console.log(paymentId);
+// })
+// .catch(function (err) {
+//    console.log(err.message);    
+// })
+// .then(function (orderId) {
+//     console.log("No matter what happens, I will be executed");
+// });
+
+// function createOrder(cart) {
+// const pr = new Promise(function (resolve, reject) {
+//       create order
+//       validate the cart
+//       orderid
+//      if(!validateCart(cart)){
+//          const err = new Error("Cart is not valid");
+//      reject(err);
+//     }
+//      const err = new Error("Cart is not valid");
+//      reject(err);
+// const orderId = "123";
+//  if (orderId) {
+//      setTimeout(function () {
+//          resolve(orderId);
+//      }, 3000);
+//  }
+//});
+// return pr;
+// }
+
+// function proceedToPayment(orderId) {
+// return new Promise(function (resolve, reject) {
+//      resolve("Payment Successfull");
+// });
+// }
+// function validateCart(cart) {
+//      return false;
+// }
+
+// let me do the dry of the code at differnet edge cases in depth so createOrder(cart) will return a promise object and then we are attaching a function to the promise object using then method, so when the value is returned by the promise object then resolve( when used ) will call the function inside the then method and then it will pass the value returned by the promise object to the function inside the then method, so now we can use the value returned by the promise object inside the function inside the then method, so when the order is created then it will call the function inside the then method and then it will pass the order id to the function inside the then method and then we can use the order id inside the function inside the then method and then we are passing the order id to the proceedToPayment function, so now we can proceed to payment using the order id, so this is how we can use promises to handle asynchronous operations, so this is what .then does, so know lets see what does resolve does, resolve basically calls the function inside the .then method and then it will pass the value returned by the promise object to the function inside the .then method
+
+
+//20 b)  Promise APIs + Interview Questions
+
+// Promise.all, Promise.allSettled,, Promise.race, Promise.any
+
+// promise apis are used to handle multiple promises at the same time
+// Promise.all
+// The Promise.all method takes an array of promises and returns a single promise that resolves when all of the promises in the array have resolved. If any of the promises in the array is rejected, the Promise.all promise is rejected immediately and also lets say there are three proises in the array and the first promise is rejected then the Promise.all promise is rejected immediately, so this is how Promise.all works and also one thing that lets say 1st promise take 3 sec to resolve and 2nd promise take 4 sec to resolve and 3rd promise take 5 sec to resolve then the Promise.all promise will take 5 sec to resolve because it will take the time of the longest promise to resolve, so this is how Promise.all works one more thing is that the order of the promises in the array will be maintained in the results array, this means that the first element of the results array will be the resolved value of the first promise in the array, the second element of the results array will be the resolved value of the second promise in the array and so on, so this is how Promise.all works
+
+//for example :
+// const promise1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 1 resolved");
+//   }, 1000);
+// });
+// const promise2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 2 resolved");
+//   }, 2000);
+// });
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 3 resolved");
+//   }, 3000);
+// });
+// const promises = [promise1, promise2, promise3];
+// Promise.all(promises).then((results) => {
+//   console.log(results);
+// });
+
+// In this example, we have three promises (promise1, promise2, and promise3) that resolve after different intervals. We use Promise.all to wait for all of them to resolve, and then we log the results to the console. The results array will contain the resolved values of all the promises in the same order as the original promises array.
+
+// const p1 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P1 success");
+//     },3000)
+// });
+// const p2 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P2 Error");
+//     },4000)
+// });
+// const p3 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P3 success");
+//     },1000)
+// });
+// Promise.all([p1,p2,p3])
+// .then((res)=>{
+//     console.log(res)
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
+//in this example p1 is taking 3 sec to resolve and p2 is taking 4 sec to resolve and p3 is taking 1 sec to resolve so the promise will take 4 sec to resolve because it will take the time of the longest promise to resolve and the value will be the value of the first settled promise to resolve, but over here p2 is rejected so the promise will be rejected and the value will be the error message of p2 after 4 sec, so this is how Promise.all works
+
+
+// Promise.allSettled: The Promise.allSettled method takes an array of promises and returns a single promise that resolves when all of the promises in the array have settled (either resolved or rejected). The resulting promise will always be resolved, and the results array will contain an object for each promise with the status and value or reason of the promise. This is useful when you want to wait for multiple asynchronous operations to complete, regardless of whether they are successful or not.
+// so lets say there are three promises p1,p2,p3 and p1 is resolved and p2 is rejected and p3 is resolved then the Promise.allSettled promise will be resolved and the results array will contain an object for each promise with the status and the value will be val1, error message, val3, so this is how Promise.allSettled works
+
+// const p1 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P1 success");
+//     },3000)
+// });
+// const p2 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P2 Error");
+//     },4000)
+// });
+// const p3 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P3 success");
+//     },1000)
+// });
+// Promise.allSettled([p1,p2,p3])
+// .then((res)=>{
+//     console.log(res)
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
+//in this example p1 is taking 3 sec to resolve and p2 is taking 4 sec to resolve and p3 is taking 1 sec to resolve so the promise will take 4 sec to resolve because it will take the time of the longest promise to resolve and the value will be the value of the first settled promise to resolve, but over here p2 is rejected so the promise will be resolved and the value will be an array of objects for each promise with the status and the value will be val1, error message, val3, so this is how Promise.allSettled works
+
+// [
+//   { status: 'fulfilled', value: 'P1 success' },
+//   { status: 'rejected', reason: 'P2 Error' },
+//   { status: 'fulfilled', value: 'P3 success' }
+// ]
+//and the output is coming after 4 sec becuase it will take the time of the longest promise to resolve and the value will be the value of the first settled promise to resolve, but over here p2 is rejected so the promise will be resolved and the value will be an array of objects for each promise with the status and the value will be val1, error message, val3, so this is how Promise.allSettled works
+
+// promise.race : The Promise  method takes an array of promises and returns a single promise that resolves or rejects as soon as one of the promises in the array resolves or rejects. The resulting promise will have the same status and value or reason as the first promise in the array to settle. This is useful when you want to wait for the first asynchronous operation to complete, regardless of whether it is successful or not.
+// so lets say there are three promises p1,p2,p3 of promise.race and p1 takes 3 sec to resolve and p2 takes 1 sec to resolve and p2 takes 1 sec to resolve then the promise will be resolved after 1 sec and the value will be the value of the first settled promise to resolve, so basically this is a race whichever will resolve first will be the value of the promise
+
+// const p1 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P1 success");
+//     },3000)
+// });
+// const p2 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P2 success");
+//     },1000)
+// });
+// const p3 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P3 reject");
+//     },5000)
+// });
+// Promise.race([p1,p2,p3])
+// .then((res)=>{
+//     console.log(res)
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
+//promise.race , race karta hai mtb jho bhi kam time letta hai usse yehh print karra detta hai that's it, abh agar vo kam time walla reject hoo raha hoo yaa phir resolve hoo raha hoo toh bhi yehh usse print karra detta hai.
+
+// let say if p2 is rejected then the promise will be error messzage of p2, as the first promise to settle will be the value of the promise and this is how promise.race works and also one thing that lets say 1st promise take 3 sec to resolve and 2nd promise take 4 sec to resolve and 3rd promise take 5 sec to resolve then the promise will take 3 sec to resolve because it will take the time of the shortest promise to resolve, it just give the shortest time to resolve the promise.
+
+// Promise.any: The Promise.any method takes an array of promises and returns a single promise that resolves as soon as one of the promises in the array resolves. If all of the promises in the array are rejected, the Promise.any promise is rejected with an AggregateError containing the reasons of all the rejections. This is useful when you want to wait for the first successful asynchronous operation to complete, regardless of whether the other promises are successful or not.
+
+//promise.any first settled success ka wait karta hai mann lo 3 promises hai p1,p2,p3 and mann lo p1 3 sec mai reject hoo jatta hai , p2 1 sec mai reject hoo jatta hai and p3 5 sec mai resolve hotta hai tho yehh p3 ko print karra degga yehh error walle ko ignore kar detta hai lekin agar tino hii reject hoo jatte hai toh yehh error message print karra degga, so this is how promise.any works
+// const p1 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         resolve("P1 success");
+//     },5000)
+// });
+// const p2 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P2 reject");
+//     },2000)
+// });
+// const p3 = new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//         reject("P3 reject");
+//     },1000)
+// });
+// Promise.any([p1,p2,p3])
+// .then((res)=>{
+//     console.log(res)
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
+//output 
+// P1 success
+
+// so lets say there are three promises p1,p2,p3 of promise.any and p1 takes 3 sec to resolve and p2 takes 1 sec to reject and p3 takes 2 sec to resolve then the promise will be resolved after 1 sec and the value will be the value of the first settled promise to resolve, so basically we will get the value of the first settled promise to resolve, so over here we will get p3 value as it is the first settled promise to resolve, so this is how promise.any works and also one thing that lets say 1st promise take 3 sec to resolve and 2nd promise take 4 sec to resolve and 3rd promise take 5 sec to resolve then the promise will take 1 sec to resolve because it will take the time of the shortest promise to resolve, it just give the shortest time to resolve the promise.
+
+
+
+// difference between promise.any and promise.race is that promise.any will resolve as soon as one of the promises in the array resolves and if all of the promises in the array are rejected, the Promise.any will see another promise that if second promise is resolve with less time than other promise then it will give that promise but if all of the promises in the array are rejected, the Promise.any promise is rejected with an AggregateError containing the reasons of all the rejections, and in promise.race we basically race the promises and the first promise to settle will be the value of the promise and either that promise is rejected or resolved we get the value of that promise, so this is the difference between promise.any and promise
+
+//21)  Async Await
+
+// Async/Await is a new way to write asynchronous code in JavaScript. It is built on top of promises and allows you to write asynchronous code that looks synchronous. It is a syntactic sugar for promises, and it makes asynchronous code easier to read and write.
+// async keyword is used to define an asynchronous function, and await keyword is used to wait for a promise to resolve. The await keyword can only be used inside an async function, and it pauses the execution of the async function until the promise is resolved. This allows you to write asynchronous code that looks synchronous, making it easier to read and write.
+
+//22) this keyword
+//(1) //this in global space
+//  console.log(this); //global object
+//  console.log(this === window); //true
+// this is window object in global space
+
+// function x(){
+// console.log(this);
+// }
+// inside function this is not window object
+// this is undefined in function
+
+// this keyword works differently strict mode and non strict mode
+//if the value of this keyword is undefined or null then this keyword will be replaced with global object , only in non strict mode
+// in strict mode this keyword will be undefined
+//if the interview ask you that what will be the value of this keyword inside the function then you will say that it will be undefined but because js has this substituion rule so it (this) will be replaced with global object if you will not used strict mode
+
+// (2) this keyword value depend on how the function is called (window)
+
+//if we call the function using window.x() then this keyword will be window object
+// if we call the function using x() then this keyword will be window object in strict mode and undefined in non strict mode
+
+//(3) this inside a object method
+// const user = {
+//     name: "john",
+//     courseCount: 4,
+
+// difference between function and a method is that method is a function which is inside an object
+// for example : function x(){} this is a function
+// const user = {
+//     name: "john",
+//     courseCount: 4,
+//     getCourseCount: function(){
+//         console.log("line 1", this);
+//         function sayHello(){
+//             console.log("hello");
+//             console.log("line 2", this);
+//         }
+//         sayHello();
+//     }
+// }
+// user.getCourseCount();
+// this is a method
+// getCourseCount is the mehtod of user object
+// this is user object in line 1 and this is window object in line 2 because this is a function and this is a global object in non strict mode and undefined in strict mode and this is a function so this will be window object in non strict mode and undefined in strict mode and this is a function so this will be window object in non strict mode and undefined in strict mode
+
+// const alakh ={
+//      a: 10,
+//      x:function(){
+//        console.log(this);
+//      }
+// }
+// obj.x();
+// inside obj , log will print  alakh object, so whenever you are inside the method the value of this keyword will be the object itself
+// so in console log it will print alakh object
+// {
+//      a: 10,
+//      x:function(){
+//        console.log(this);
+//      }
+// }
+
+// 4) call apply bind
+// call, apply and bind are used to change the value of this keyword
+// const student = {
+//     name: "alakh",
+//     printName: function(){
+//         console.log(this.name);
+//     }
+// }
+// student.printName();
+
+// const student2 = {
+//     name: "rahul",
+// }
+// student.printName.call(student2); //value of this keyword will be student2 object so it will print rahul in console log, basically we are borrowing the method from student object and using the data of student2 object so it will print rahul in console log, and this is refering to student2 object, we can point this to as many objects as we want using call method
+
+//(5) this inside arrow function
+
+// const obj = {
+//    a: 10,
+//    x: function(){
+//        console.log(this);
+//     }
+// }
+// this is window object in arrow function because arrow function does not have its own this keyword so it will take the value of this keyword from its parent which is window object in this case so it will print window object in console log in arrow function, also one thing that arrow functions are not method inside an object
+
+// (6) this inside nested arrow function
+// const obj2 = {
+//     a: 20,
+//     x: function(){
+//         const y = () => {
+//             console.log(this);
+//         }
+//         y();
+//     }
+// }
+// obj2.x();
+// this is obj2 object in nested arrow function because arrow function does not have its own this keyword so it will take the value of this keyword from its parent which is obj2 object in this case so it will print obj2 object in console log in nested arrow function basically over here this prints the value of its parent which is obj2 object becuse it forms lexical enclosed with its parent which is obj2 object in this case
+// so this keyword will print this as a object
+// {
+//     a: 20,
+//     x: function(){
+//         const y = () => {
+//             console.log(this);
+//         }
+//         y();
+//     }
+// }
+
+// (7) this inside DOM element => reference to HTML element
+// const btn = document.querySelector(".btn");
+// btn.addEventListener("click", function(){
+//     console.log(this);
+// })
+// this will print the button element in console log
+// <button class="btn">Click me</button> in console log
+//so the value of this keyword inside the event listener is the element on which the event is attached so here the event is attached on button element so it will print button element in console log, this will the refernece to the HTML element on which the event is attached so here the event is attached on button element so it will print button element in console log.

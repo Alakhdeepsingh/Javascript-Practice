@@ -195,6 +195,10 @@
 // console.log(a);
 //udefined
 
+// var a;
+// console.log(b);
+//not defined
+
 // var z=10;
 // console.log(z);
 //10
@@ -257,6 +261,13 @@
 // //10
 
 // function a() {
+//   var b = 10;
+// }
+//   console.log(b);
+// a();
+//b is not defined because b is not present in the scope of a function a() so it will go to global space and it will not find b there so it will give b is not defined
+
+// function a() {
 //   var b = 30;
 //   console.log(b);
 // }
@@ -277,6 +288,19 @@
 // var b = 10;
 // a();
 //30
+
+// function a() {
+//   var b = 30;
+//   function c(){
+//      console.log(b);
+//   }
+//   c();
+// }
+// var b = 10;
+// a();
+
+//you can call c() function anywhere see in the above two code, don't get confused with the position of c() function, just remeber that c() function is lexically sitting inside a() function, so in call stack first a() function will be called and then when it will be
+// executed then c() function will go in the call stack and then it will be executed and then it will be deleted from the call stack, so don't get confused with the position of c() function just remeber we call function outside the function
 
 // function a() {
 //   var b = 30;
@@ -341,12 +365,14 @@
 // let a = 10;
 // var b = 100;
 // ReferrenceError : Caanot access a before initialization
-//
+// ReferenceError occurs when trying to reference a variable or function that is not declared or is out of scope
+
 // if any variable got assigned memory so that variable is hoisted
 // so in case of var the variable got store in global space
 // but in case of let and const , variable don't get store in global that's why Reference error comes
 //
-// Temporal dead zone means since this let variable got hoisted ( means starting mai tho alag memory mai rahega undefined (in script memeory mai undefined rahega naa ki global memory mai) (mtb hoisted tho rahega ) phir jabh usme value jaegi mtb initlize hogha so itne time ke bech ho temporal dead zone bolte hai ) and till it got initialize some value
+// Temporal dead zone means since this let variable got hoisted ( means starting mai tho alag memory mai rahega undefined (in script memeory mai undefined rahega naa ki global memory mai) (mtb hoisted tho rahega ) phir jabh usme value jaegi  then it will go to different memory space (global memory space) and then it will get initialize and then it will get some value
+// mtb initlize hogha so itne time ke bech ho temporal dead zone bolte hai ) and till it got initialize some value
 //
 // similarly, if we try to access any value in window object in console
 // then window.b will print 10 but window.a will give undefined because let and const are in different memory space
@@ -377,7 +403,7 @@
 //b=10000;
 //console.log(b);
 //Type error: assignment to constant vaible
-//
+//A TypeError occurs when an operation is performed on a value of the wrong type.
 //
 //Three types of error are there type error, syntax error, reference error
 //
@@ -439,3 +465,7 @@
 //console.log(b) :100
 //this b is consoling 100 because b has 2 memeory space same in case of const will also happen
 // remember one thing that var always get memory in global space
+
+//let has differnet memory space in global and in block
+//but var has same memory in global and in block so that is why a is pointing to same memory space
+//but b is pointing to different memory space so that is why b is not getting shadowed
