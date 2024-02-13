@@ -83,7 +83,7 @@
 
 // let name={
 //      firstName: 'Alakhdeep',
-//      lastName: 'Singh',
+//      lastName: 'Singh ',
 //}
 // let printFullName = function(hometown, state){
 //          console.log(this.firstName + ' ' + this.lastName+ ' ' + hometown + ' ' + state);

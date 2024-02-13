@@ -768,6 +768,224 @@ The .then method in a Promise is used to attach callbacks that will be executed 
 // Async/Await is a new way to write asynchronous code in JavaScript. It is built on top of promises and allows you to write asynchronous code that looks synchronous. It is a syntactic sugar for promises, and it makes asynchronous code easier to read and write.
 // async keyword is used to define an asynchronous function, and await keyword is used to wait for a promise to resolve. The await keyword can only be used inside an async function, and it pauses the execution of the async function until the promise is resolved. This allows you to write asynchronous code that looks synchronous, making it easier to read and write.
 
+// async is a keyword that is used before a function to create a async function
+
+//async function always return a promise, remeber promise object 
+// async function getData(){
+//      return "Namaste";
+// }
+// either you written a promise from this function but if you don't return a promise from this function and if you are returning a value then this async function will automatically wrap the value in a promise
+
+
+// async function getData(){
+//      return "Namaste";
+// }
+// const data = getData();
+// console.log(data)
+// data.then((res)=>console.log(res));
+//so in data, promise will be returned, so we can do 
+// .then method on data promise  
+//output of res is: Namaste because in response we get the namaste only, remember this line 
+
+// const p1 = new Promise((resolve,reject) =>{
+//         resolve("P1 success");
+// });
+
+// so usually promise resolve and in that it passes message, after then , .then method is being called then we pass the value that came from resolve inside the function, so that is why over here whe we are returning Namaste so it is coming under promise object but insidly it is working with as this response() things like then we are using data.then((res)=>console.log(res)); this line so response usually triggered .then method and remeber response don't contain promise it only contain message so that's why we get response message that is Namaste in data.then((res)=>console.log(res)); though in data console we will get the promise
+
+// example of promise with async await
+
+// const p = new Promise((resolve,reject) =>{
+    // resolve("P1 success");
+// });
+// async function getData(){
+    // return p;
+// }
+// const data = getData();
+// data.then((res)=>console.log(res));
+
+// so lets dry run this code, so in data, promise will be returned, so we can do .then method on data promise, so in response we get the promise only, so that is why over here when we are returning p so it is coming under promise object but insidly it is working with as this response() things like then we are using data.then((res)=>console.log(res)); this line so response usually triggered .then method and remeber response don't contain promise it only contain message so that's why we get response message that is P1 success in data.then((res)=>console.log(res)); though in data console we will get the promise
+// different between the above two programs is only syntax but we are getting promise object in both the cases
+
+// example of  async await, async and await are used to handle the promises in a better way 
+
+
+// const p = new Promise((resolve,reject) =>{
+//     resolve("P1 success");
+// });
+// async function getData(){
+//     const val = await p;
+// }
+// getData();
+//remeber this line that you will use await keyword infront of the promise.
+//remember await is a keyword which will only be used inside the async function and we write await it infront of promise and it will wait for the promise to resolve and then it will store the value of the promise in the variable, so in this case it will store the value of the promise in the val variable, so this is how we can use async and await to handle the promises in a better way
+
+// const p = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P1 success");
+//   },10000)
+// });
+
+// function getData(){
+//   p.then((res)=> console.log(res));
+//   console.log("Hello");
+// }
+// getData();
+// so here come interesting thing that what will be printeed first in the console log, so in the console log Hello will be printed first and then P1 success will be printed, so this is how we can use promises to handle asynchronous operations, so this is what .then does.
+//   p.then((res)=> console.log(res));
+//  on this line JS Engine will not wait promise to resolve, it will go to next line and print Hello and then after 10 sec it will print P1 success, so this is how we can use promises to handle asynchronous operations, so this is what .then does.
+
+// const p = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P1 success");
+//   },10000)
+// });
+
+// async function getData(){
+//   const val = await p;
+//   console.log("Hello");
+//   console.log(val);
+// }
+// getData(); 
+
+//so in this case due to await the program will not go below , basically it will wait for the promise to resolve and then it will go to the next line, so in this case Hello will be printed first and then P1 success will be printed, but await stop the code to go below, so this is how we can use async and await to handle the promises in a better way, our JS Engine waits for the promise to resolve and then it will go to the next line, it will only go to the next line when the promise is resolved but in above program it will not wait for the promise to resolve and it will go to the next line because we are using .then method, and also we are not using async and await in the above program, so this is how we can use async and await to handle the promises in a better way
+
+
+// const p = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P1 success");
+//   },10000)
+// });
+
+// async function getData(){
+//   const val = await p;
+//   console.log("Hello");
+//   console.log(val);
+
+//   const val2 = await p;
+//   console.log("Hello2");
+//   console.log(val2);
+// }
+// getData();
+// so in this case basically Hello will be printed then P1 success then Hello2 then P1 success, so basically program both await is running parallely, so this is how we can use async and await to handle the promises in a better way, so this is how we can use async and await to handle the promises in a better way, it will not work like that that first after 10 sec Hello and P1 success will be printed and then after 10 sec Hello2 and P1 success will be printed,so it will not take 20 sec to complete the program.
+
+// so getData 
+//call Stack
+// so first off all call stack is empty but later getData will be pushed to the call stack and then val will be declared and then await p will be pushed to the call stack and then it will wait for the promise to resolve and then it will go to the next line and then Hello will be printed and then P1 success will be printed and then val2 will be declared and then await p will be pushed to the call stack and then it will wait for the promise to resolve and then it will go to the next line and then Hello2 will be printed and then P1 success will be printed, so this is how the call stack works in this case, so this is how we can use async and await to handle the promises in a better way
+
+// so getData execution will suspend when it will reach to the await keyword and then it will wait for the promise to resolve and then it will go to the next line, and after then after 5 sec getData will again come in call stack it will start executing from where it came, so it will again suspend the execution because of 2nd await keyword and then it will wait for the promise to resolve and then it will go to the next line, so this is how the call stack works in this case.
+
+
+// const p1 = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P1 success");
+//   },5000)
+// });
+
+// const p2 = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P2 success");
+//   },10000)
+// });
+
+// async function getData(){
+//   const val = await p1;
+//   console.log("Hello");
+//   console.log(val);
+
+//   const val2 = await p2;
+//   console.log("Hello2");
+//   console.log(val2);
+// }
+// getData();
+// so in this code we get first after 5sec Hello will be printed then P1 success will be printed, and after 10 sec Hello2 will be printed and then P2 success will be printed so this line JS Engine willl wait is not true
+
+
+// const p1 = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P1 success");
+//   },10000)
+// });
+
+// const p2 = new Promise((resolve,reject) =>{
+//   setTimeout(()=>{
+//     resolve("P2 success");
+//   },5000)
+// });
+
+// async function getData(){
+//   const val = await p1;
+//   console.log("Hello");
+//   console.log(val);
+
+//   const val2 = await p2;
+//   console.log("Hello2");
+//   console.log(val2);
+// }
+// getData();
+// so in this code we get first after 10sec Hello will be printed then P1 success will be printed, and after 5 sec Hello2 will be printed and then P2 success will be printed so this line JS Engine willl wait is not true so basically Hello2 and val2 will already being executed but it will not print because Hello and val are taking 10sec to print 
+
+// const API_URL = "https://api.github.com/users/alakhdeep";
+
+// async function getData(){
+//     const data = await fetch("API_URL");
+//     const jsonValue = await data.json()
+// }
+// getData();
+
+
+// How does fetch works?
+// fetch returns a promise (response object), and so we usually add await indfront of promise or we can use .then method on the fetch promise.
+// Fetch when resolved then it will return the response object and then we can use .json method on the response object to get the data from the response object, so this is how we can use fetch to get the data from the api, so in data we will get the response object and we will convert into json and remember data.json() is also a promise so we can use .then method on the data.json() promise to get the data from the response object 
+
+// In JavaScript, data.json() is a promise because the json() method returns a promise that resolves with the parsed JSON data. The fetch API is designed to work with asynchronous operations, and the json() method is no exception.
+
+// Here's a breakdown of how it works:
+
+// When you call fetch("API_URL"), it returns a promise that represents the response from the server.
+
+// The json() method is part of the Response interface, and when you call data.json(), it starts the process of asynchronously reading the body of the response as JSON.
+
+// The json() method returns a new promise. This promise is in a pending state until the JSON data is fully read and parsed.
+
+// Once the JSON data is successfully parsed, the promise is resolved with the parsed JSON data.
+
+// If there is an issue parsing the JSON (for example, if the response body is not valid JSON), the promise is rejected with an error.
+
+
+// fetch().then(response => response.json()).then(data => console.log(data));
+// we also use this type of code also so it is similar to upper code, so the fetch function return promise so that's why we used .then after thrn we are converting response to json using .json and then .json again return promise so then we are fetching promise object using .then and then we are getting out data in data varibale
+
+// so in this code we are using .then method on the fetch promise to get the response object and then we are using .json method on the response object to get the data from the response object, so this is how we can use fetch to get the data from the api, so in data we will get the response object and we will convert into json and remember data.json() is also a promise so we can use .then method on the data.json() promise to get the data from the response object
+
+//error handling 
+//so here we will use try catch to handle error methods
+
+
+// const API_URL = "https://api.github.com/users/alakhdeep";
+
+// async function getData(){
+// try {
+//     const data = await fetch("API_URL");
+//     const jsonValue = await data.json()
+// } catch (error) {
+//    console.log(error);
+// }
+// getData();
+
+
+//anpther way of writing the code is
+// const API_URL = "https://api.github.com/users/alakhdeep";
+
+// async function getData(){
+// try {
+//     const data = await fetch("API_URL");
+//     const jsonValue = await data.json()
+// } 
+// getData().catch ((error) => console.log(error));
+//both async await and promise are good to use, it's just async await is more readable and easy to write, so it is better to use async await to handle the promises in a better way, so this is how we can use async and await to handle the promises in a better way
+
+
 //22) this keyword
 //(1) //this in global space
 //  console.log(this); //global object
